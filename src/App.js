@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Route, Link, NavLink } from 'react-router-dom';
+import { Route, Routes, Link, NavLink } from 'react-router-dom';
+import { BingoView } from './Views/BingoView';
+import { ProfileView } from './Views/ProfileView';
 
 import './App.css';
 
@@ -9,12 +11,10 @@ export const App = () => {
 
   return (
     <div className="App">
-      <Route exact path="/">
-        <ProfileView />
-      </Route>
-      <Route exact path="/bingo">
-        <BingoView />
-      </Route>
+      <Routes>
+        <Route exact path="/" element={<ProfileView />} />
+        <Route exact path="/bingo" element={<BingoView />} />
+      </Routes>
     </div>
   );
 }
