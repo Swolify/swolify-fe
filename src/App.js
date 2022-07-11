@@ -12,8 +12,8 @@ export const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<ProfileView />} />
-        <Route exact path="/bingo" element={<BingoView />} />
+        <Route exact path="/something" element={<ProfileView />} />
+        <Route exact path="/" element={<BingoView />} />
       </Routes>
     </div>
   );
