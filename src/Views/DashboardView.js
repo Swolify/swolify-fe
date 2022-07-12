@@ -16,6 +16,7 @@ export const DashboardView = () => {
       <WinLossRatioChart/>
       <GameStats />
     </section>
+    <h2>History</h2>
     <HistoryContainer/>
     </>
   )

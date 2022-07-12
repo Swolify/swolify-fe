@@ -39,6 +39,7 @@ function levelToggle(newLevel) {
   return (
     <>
     <form className="exercise-selection">
+      <h2>Play Game!</h2>
       <p>What would you like to train?</p>
         <div className="exercise-type">
           <div className="exercise-type-select">

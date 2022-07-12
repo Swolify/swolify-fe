@@ -1,0 +1,27 @@
+.history-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  height: 350px;
+  width: 75%;
+  background-color: lightgrey;
+  border-radius: 8px;
+  box-shadow: inset 0px 0px 11px 0px #080808;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.activity-history {
+  list-style-type: none;
+}
+
+hr {
+  border: 1px solid black;
+}
+
+.history-card {
+  background-color: #ffff;
+  width: 90%;
+  margin-top: 10px;
+}

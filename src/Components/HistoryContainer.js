@@ -3,9 +3,12 @@ import '../Styles/HistoryContainer.css'
 
 export const HistoryContainer = () => {
 
-const games = [{gameId: 1, activ: [1, 6, 2, 7], outcome: "win"},
-               {gameId: 2, activ: [10, 69, 29, 76], outcome: "loss"},
-               {gameId: 3, activ: [61, 26, 72, 27], outcome: "win"}]
+const games = [{gameId: 1, activ: ['sit ups','sit ups','sit ups','sit ups' ], outcome: "win"},
+               {gameId: 2, activ: ['Burpee', 'Burpee', 'Burpee', 'Burpee'], outcome: "loss"},
+               {gameId: 3, activ: ['squats', 'squats', 'squats', 'squats'], outcome: "win"},
+               {gameId: 4, activ: ['sit ups','sit ups','sit ups','sit ups' ], outcome: "win"},
+               {gameId: 5, activ: ['Burpee', 'Burpee', 'Burpee', 'Burpee'], outcome: "loss"},
+               {gameId: 6, activ: ['squats', 'squats', 'squats', 'squats'], outcome: "win"}]
 
   const generateHistoryCards = () => {
     const historyCards = games.map(game => {
@@ -16,12 +19,13 @@ const games = [{gameId: 1, activ: [1, 6, 2, 7], outcome: "win"},
     })
 
       return (
-        <div>
+        <div className="history-card">
           <p>Game number: {game.gameId}</p>
           <p>Outcome: {game.outcome}</p>
-          <ul>
+          <ul className="activity-history">
             {activities}
           </ul>
+          <hr></hr>
         </div>
       )
     })
