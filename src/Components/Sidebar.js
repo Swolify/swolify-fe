@@ -1,4 +1,6 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
+import "../Styles/Sidebar.css"
 
 export const Sidebar = () => {
     const [activities, setActivities] = useState([])
@@ -7,28 +9,35 @@ export const Sidebar = () => {
 
    const activitiesArray = [
         {
-        id: 1,
-        name: pushups
+            id: 1,
+            name: "pushups"
         },
         {
             id: 2,
-            name: running
+            name: "running"
         },
         {
             id: 3,
-            name: jumping
+            name: "jumping"
         }
     ]
 
     useEffect(() => {
         setActivities([])
-        for (let i = 0; i < activities; i++) {
-            setExcercises(prevExcercises => [...prevExcercises, <button className='excercise-btn'>{activitiesArray[i].name}</button>])
+        for (let i = 0; i < activitiesArray.length; i++) {
+            setActivities(prevExcercises => [...prevExcercises, <button className='excercise-btn'>{activitiesArray[i].name}</button>])
         }
       },[])
 
+    useEffect(() => {
+        console.log(activities)
+      },[activities])
+
+
   
   return (
-    <div>Sidebar</div>
+    <div className="sidebar">
+        <ul>{activities}</ul>
+    </div>
   )
 }

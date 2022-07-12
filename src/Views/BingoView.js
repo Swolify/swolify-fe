@@ -33,24 +33,26 @@ export const BingoView = () => {
   }, [level])
 
   return (
-    <>
+    <div className="bingo-view">
       <Sidebar />
-      <div>BingoView {level} {squareCount} squares </div>
-      <div className='buttonContainer'>
+      <div className="main">
+        <div>BingoView {level} {squareCount} squares </div>
+        <div className='buttonContainer'>
 
-        <button onClick={() => {
-          setLevel("Easy")
-        }}>Easy Mode</button>
-        <button onClick={() => {
-          setLevel("Hard")
-        }}>Hard Mode</button>
-        <button>History</button>
+          <button onClick={() => {
+            setLevel("Easy")
+          }}>Easy Mode</button>
+          <button onClick={() => {
+            setLevel("Hard")
+          }}>Hard Mode</button>
+          <button>History</button>
 
-      </div>
+        </div>
 
-      <div className={`BingoCard${level}`}>
-        {squares}
-      </div>
-    </>
+        <div className={`BingoCard${level}`}>
+          {squares}
+        </div>
+      </div>  
+    </div>
   )
 }
