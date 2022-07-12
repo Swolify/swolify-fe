@@ -5,3 +5,8 @@
     width: 20vw;
     background-color: aquamarine;
 }
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+}

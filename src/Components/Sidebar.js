@@ -37,7 +37,7 @@ export const Sidebar = () => {
   
   return (
     <div className="sidebar">
-        <ul>{activities}</ul>
+        <ul className="activity-list">{activities}</ul>
     </div>
   )
 }
