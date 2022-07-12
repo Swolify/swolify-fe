@@ -1,5 +1,6 @@
 {
   "name": "swolify-fe",
+  "homepage": "http://swolify.github.io/swolify-fe/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -39,7 +40,6 @@
       "last 1 safari version"
     ]
   },
-  "homePage": "https://swolify.github.io/swolify-fe/" ,
   "devDependencies": {
     "cypress": "^10.3.0",
     "gh-pages": "^4.0.0"
