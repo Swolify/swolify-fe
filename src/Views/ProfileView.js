@@ -23,7 +23,7 @@ const allIcons = animals.map((animal) => <UserIcon image={animal} key={animal}/>
       <div className="icons-section">
         {allIcons}
       </div>
-      <h2>Select A Profile</h2>
+      <h2 className="profile-instructions">Select A Profile</h2>
     </section>
   )
 }
