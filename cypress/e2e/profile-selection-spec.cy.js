@@ -1,7 +1,7 @@
 
 describe('swolify-fe', () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000")
+    cy.visit("http://localhost:3000/")
   })
 
   it('Should contain the Swolify title', () => {
