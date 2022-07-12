@@ -1,0 +1,6 @@
+.pieChart{
+  background-color: lightgrey;
+  border-radius: 8px;
+  box-shadow: inset 0px 0px 11px 0px #080808;
+  width: 20%;
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { VictoryPie } from 'victory';
+import '../Styles/WinLossRatio.css'
 
 export const WinLossRatioChart = () => {
 
