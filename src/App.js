@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Route, Routes, Link, NavLink } from 'react-router-dom';
 import { BingoView } from './Views/BingoView';
 import { ProfileView } from './Views/ProfileView';
+// import Modal from './Components/Modal';
 
 import './App.css';
 

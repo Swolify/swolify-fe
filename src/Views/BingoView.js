@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sidebar } from '../Components/Sidebar';
 import "../Styles/BingoView.css"
+import { Modal } from '../Components/Modal';
 
 
 export const BingoView = () => {
@@ -52,7 +53,7 @@ export const BingoView = () => {
         <div className={`BingoCard${level}`}>
           {squares}
         </div>
-      </div>  
+      </div>
     </div>
   )
 }
