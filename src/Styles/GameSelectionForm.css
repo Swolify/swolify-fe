@@ -1,0 +1,9 @@
+.exercise-selection {
+  background-color: lightgrey;
+  border-radius: 8px;
+  box-shadow: inset 0px 0px 11px 0px #080808;
+  padding: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 50%
+}
