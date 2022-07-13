@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
+import { Sidebar } from '../Components/Sidebar';
 import "../Styles/BingoView.css"
 
 
@@ -9,13 +10,13 @@ export const BingoView = () => {
 
   const createSquares = () => {
     if (!level) return
-    switch(level) {
+    switch (level) {
       case "Easy":
         setSquareCount(9)
-      break
+        break
       case "Hard":
         setSquareCount(16)
-      break
+        break
     }
 
 
@@ -23,32 +24,35 @@ export const BingoView = () => {
   useEffect(() => {
     setSquares([])
     for (let i = 0; i < squareCount; i++) {
-      setSquares(prevSquares => [...prevSquares, <div className='BingoSquare'>{i +1}</div>])
+      setSquares(prevSquares => [...prevSquares, <div className='BingoSquare'>{i + 1}</div>])
     }
-  },[squareCount])
+  }, [squareCount])
 
   useEffect(() => {
     createSquares()
-  },[level])
+  }, [level])
 
   return (
-    <>
-    <div>BingoView {level} {squareCount} squares </div>
-    <div className='buttonContainer'>
+    <div className="bingo-view">
+      <Sidebar />
+      <div className="main">
+        <div>BingoView {level} {squareCount} squares </div>
+        <div className='buttonContainer'>
 
-      <button onClick={()=> {
-        setLevel("Easy")
-      }}>Easy Mode</button>
-      <button onClick={()=> {
-        setLevel("Hard")
-      }}>Hard Mode</button>
-      <button>History</button>
+          <button onClick={() => {
+            setLevel("Easy")
+          }}>Easy Mode</button>
+          <button onClick={() => {
+            setLevel("Hard")
+          }}>Hard Mode</button>
+          <button>History</button>
 
+        </div>
+
+        <div className={`BingoCard${level}`}>
+          {squares}
+        </div>
+      </div>  
     </div>
-
-    <div className={`BingoCard${level}`}>
-      {squares}
-    </div>
-    </>
   )
 }

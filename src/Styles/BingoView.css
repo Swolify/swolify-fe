@@ -1,35 +1,56 @@
-.BingoCardHard{
+.BingoCardHard {
     /* background-color: aqua; */
     width: 90vw;
     height: 90vh;
     display: grid;
     place-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 10px;
-   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    /* padding: 10px; */
+    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
+    margin-left: 50px;
 }
 
-.BingoCardEasy{
-    /* background-color: aqua; */
-    width: 90vw;
-    height: 90vh;
+.BingoCardEasy {
+  height: 100vh;
+  display: inline-grid;
+  grid-template-rows: 150px 150px 150px;
+  grid-template-columns: 150px 150px 150px;
+  margin-top: 15vh;
+  grid-gap: 1em;
+  align-items: center;
+  justify-items: center;
+    /* grid-gap: 1em;
+    width: 80vh;
+    height: 100vh;
     display: grid;
     place-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 10px;
-   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    grid-template-columns: 1fr 1fr 1fr; */
+   /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
 }
 
 .BingoSquare {
+    /* aspect-ratio: 1/ 1; */
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    border: 5px solid black;
     border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cstyle%3Epath%7Banimation:stroke 5s infinite linear%3B%7D%40keyframes stroke%7Bto%7Bstroke-dashoffset:776%3B%7D%7D%3C/style%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232d3561' /%3E%3Cstop offset='25%25' stop-color='%23c05c7e' /%3E%3Cstop offset='50%25' stop-color='%23f3826f' /%3E%3Cstop offset='100%25' stop-color='%23ffb961' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3' stroke-dasharray='388'/%3E %3C/svg%3E") 1;
-  /* width: 50%; */
-  /* margin-bottom: 25px; */
     display: grid;
     place-items: center;
-    
-    /* border-radius: 20px; */
+}
 
+.bingo-view {
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border: 2px solid pink;
+  height: 100vh;
+  background-size: cover;                   
+  background-repeat: no-repeat;
+  background-position: center center;      
+}
+
+.main {
+  height: 100vh;
+  width: 100vw;
 }
