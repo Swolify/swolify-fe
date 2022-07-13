@@ -95,7 +95,7 @@ const selectExcercise = () => {
         <Modal open={isOpen} onClose={() => {
           setVisabilitySideBar(true)
           setIsOpen(false)}}>
-        My names Jeff
+        My names Eli
         </Modal>
     </>
   )
