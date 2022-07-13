@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react'
 
 export const GameSelectionForm = () => {
 
-const [upperBody, setUpperBody] = useState(false)
-const [lowerBody, setLowerBody] = useState(false)
-const [core, setCore] = useState(false)
-const [cardio, setCardio] = useState(false)
-const [level, setLevel] = useState("Easy")
+const [upperBody, setUpperBody] = useState({ checked: false, category: "upper body"})
+const [lowerBody, setLowerBody] = useState({ checked: false, category: "lower body"})
+const [core, setCore] = useState({ checked: false, category: "core"})
+const [cardio, setCardio] = useState({ checked: false, category: "cardio"})
+const [level, setLevel] = useState("easy")
 const [easyChecked, setEasyChecked] = useState(true)
 const [hardChecked, setHardChecked] = useState(false)
 
@@ -19,21 +19,36 @@ useEffect(() => console.log(cardio, "Cardio"))
 useEffect(() => console.log(level))
 
 function toggle(value){
-  return !value;
+  return { checked: !value.checked, category: value.category};
 }
 
 function levelToggle(newLevel) {
 
-  if(level === "Easy") {
+  if(level === "easy") {
     setLevel(newLevel)
     setEasyChecked(false)
     setHardChecked(true)
   }
-  if(level === "Hard") {
+  if(level === "hard") {
     setLevel(newLevel)
     setEasyChecked(true)
     setHardChecked(false)
   }
+}
+
+function createGame(event) {
+  event.preventDefault()
+  const categories = [upperBody, lowerBody, core, cardio]
+  const categoriesToSend = []
+  categories.forEach((category) => {
+    if(category.checked) {
+      categoriesToSend.push(category.category)
+    }
+  })
+
+
+  console.log(categoriesToSend)
+  console.log(level)
 }
 
   return (
@@ -62,12 +77,12 @@ function levelToggle(newLevel) {
       <p>Select Difficulty Level</p>
         <div className="exercise-difficulty">
           <label htmlFor="easymode">Easy</label>
-          <input type="radio" id="easymode" name="easymode" value="Easy" checked={easyChecked} onChange={() => levelToggle("Easy")}/>
+          <input type="radio" id="easymode" name="easymode" value="Easy" checked={easyChecked} onChange={() => levelToggle("easy")}/>
           <label htmlFor="hardmode">Hard</label>
-          <input type="radio" id="hardmode" name="hardmode" value="Hard" checked={hardChecked} onChange={() => levelToggle("Hard")}/>
+          <input type="radio" id="hardmode" name="hardmode" value="Hard" checked={hardChecked} onChange={() => levelToggle("hard")}/>
         </div>
         <br></br>
-      <button className="start-game-btn">Start Game</button>
+      <button className="start-game-btn" onClick={(event) => createGame(event)}>Start Game</button>
     </form>
     </>
   )
