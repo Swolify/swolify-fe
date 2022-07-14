@@ -31,8 +31,6 @@ function levelToggle(newLevel) {
   }
 }
 
-
-
 const NEW_GAME = gql`
 mutation createGame($userId: Int!, $categories: [String!], $level: String!){
   createGame(input: {params: {
