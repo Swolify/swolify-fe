@@ -3,52 +3,77 @@ import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleRight, faAnglesRight, faDumbbell } from "@fortawesome/free-solid-svg-icons"
 import "../Styles/Sidebar.css"
+import Modal  from '../Components/Modal';
 
 export const Sidebar = () => {
     const [activities, setActivities] = useState([])
     const [visabilitySideBar, setVisabilitySideBar] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
+    const [id, setId] = useState(0)
+    const [activityObject, setActivityObject] = useState({})
 
 
    const activitiesArray = [
         {
             id: 1,
-            name: "pushups"
+            title: "pushups",
+            link: "dQw4w9WgXcQ",
+            description: "Pushups!"
+
         },
         {
             id: 2,
-            name: "running"
+            title: "running",
+            link: "dQw4w9WgXcQ",
+            description: "Pushups!"
         },
         {
             id: 3,
-            name: "jumping"
+            title: "jumping",
+            link: "dQw4w9WgXcQ",
+            description: "Pushups!"
         },
         {
             id: 4,
-            name: "lunges"
+            title: "lunges",
+            link: "dQw4w9WgXcQ",
+            description: "Pushups!"
         },
         {
             id: 5,
-            name: "box jumps"
+            title: "box jumps",
+            link: "dQw4w9WgXcQ",
+            description: "Pushups!"
         },
         {
             id: 6,
-            name: "kettlebell"
+            title: "kettlebell",
+            link: "dQw4w9WgXcQ",
+            description: "Pushups!"
         },
         {
             id: 7,
-            name: "squats"
+            title: "squats",
+            link: "dQw4w9WgXcQ",
+            description: "Pushups!"
         },
         {
             id: 8,
-            name: "kicks"
+            title: "kicks",
+            link: "dQw4w9WgXcQ",
+            description: "Pushups!"
         },
         {
             id: 9,
-            name: "pulldowns"
+            title: "pulldowns",
+            link: "dQw4w9WgXcQ",
+            description: "Pushups!"
         },
         {
             id: 10,
-            name: "pushups"
+            title: "pushups",
+            link: "dQw4w9WgXcQ",
+            description: "Pushups!"
         },
 
     ]
@@ -56,10 +81,10 @@ export const Sidebar = () => {
     useEffect(() => {
         setActivities([])
         for (let i = 0; i < activitiesArray.length; i++) {
-            setActivities(prevExcercises => [...prevExcercises, 
+            setActivities(prevExcercises => [...prevExcercises,
                 <div className="excercise-selection">
-                    <ul className="excercise-list">{activitiesArray[i].name}</ul>
-                    <button onClick={selectExcercise} className="excercise-btn"><FontAwesomeIcon className="fa-angle-right" icon={faAngleRight} /><FontAwesomeIcon className="fa-angles-right" icon={faAnglesRight} /></button>
+                    <ul className="excercise-list">{activitiesArray[i].title}</ul>
+                    <button id={activitiesArray[i].id} onClick={selectExcercise} className="excercise-btn">></button>
                 </div>])
         }
       },[])
@@ -69,26 +94,45 @@ export const Sidebar = () => {
       },[activities])
 
 
-const selectExcercise = () => {
+const selectExcercise = (e) => {
     setVisabilitySideBar(false)
+    setId(e.target.id)
 }
 
-  
+useEffect(() => {
+    if (id) {
+        setIsOpen(true) 
+        setActivityObject(getActivityDetails())
+    }
+  },[id])
+
+  const getActivityDetails = () => {
+      if (!id) return 
+      return activitiesArray.find(activity => activity.id == id)
+  }
+
+
   return (
       <>
-        {visabilitySideBar ? 
+        {visabilitySideBar ?
         <div className="sidebar-visable">
             <div className="icon-section-sidebar">
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
                 <div className="swolify-sidebar-name">SWOLIFY</div>
             </div>
-            <ul className="activity-list">{activities}</ul> 
-        </div> : 
+            <ul className="activity-list">{activities}</ul>
+        </div> :
         <div className="sidebar-hidden">
             <div className="icon-section-sidebar">
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
             </div>
         </div>  }
+        {activityObject && <Modal activityObject={activityObject} open={isOpen} onClose={() => {
+            setId(0)
+            setActivityObject({})
+            setVisabilitySideBar(true)
+            setIsOpen(false)}}>
+        </Modal>}
     </>
   )
 }

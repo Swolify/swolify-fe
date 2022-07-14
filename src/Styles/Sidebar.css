@@ -4,6 +4,7 @@
     width: 20vw;
     background-color: #FFF;
     margin: 2em;
+    transition: all .3s ease-in-out;
 }
 
 .icon-section-sidebar {
@@ -50,6 +51,9 @@
     outline:none;
     cursor: pointer;
     width: 25%;
+    border: 1px solid red;
+    margin: 0;
+    padding: 0;
  }
 
  .excercise-list {
@@ -60,6 +64,9 @@
  .fa-angle-right,
  .fa-angles-right{
      font-size: 1.5em;
+     border: 1px solid blue;
+     width: 100%;
+     height: 100%;
  }
 
  .fa-angles-right {
@@ -78,7 +85,7 @@
 
 /* SIDEBAR NEON SECTION */
 
-.sidebar-visable,
+/* .sidebar-visable,
 .sidebar-hidden {
     animation: pulsate 1.5s infinite alternate;
     border: 0.2rem solid #fff;
@@ -127,7 +134,7 @@
     .sidebar-hidden {
         animation: none;
     }
-}
+} */
 
 
 
