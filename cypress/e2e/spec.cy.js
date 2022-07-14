@@ -4,7 +4,7 @@ describe('swolify-fe', () => {
 
   })
 
-  it('true equals true', () => {
+  it.skip('true equals true', () => {
     expect(true).to.be.true
   })
 })
