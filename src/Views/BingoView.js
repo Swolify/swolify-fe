@@ -2,12 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { Sidebar } from '../Components/Sidebar';
 import "../Styles/BingoView.css"
 import { Modal } from '../Components/Modal';
+import { BingoSquare } from '../Components/BingoSquare';
 
 
 export const BingoView = () => {
-  const [level, setLevel] = useState("")
-  const [squareCount, setSquareCount] = useState(0)
+  const [level, setLevel] = useState("Easy")
+  const [squareCount, setSquareCount] = useState(9)
   const [squares, setSquares] = useState([])
+
+  const handleComplete = () => {
+    setSquares(prevSquares => {
+      const newSQ = [...prevSquares]
+      const targetIndex = newSQ.findIndex(sq => {
+        return sq.props.status === "Incomplete"
+      })
+      newSQ.splice(targetIndex,1,<BingoSquare key={targetIndex} id={targetIndex+1} title={`Complete`} status="Complete"/>)
+      return newSQ
+    })
+    console.log(squares, "squares")
+  }
 
   const createSquares = () => {
     if (!level) return
@@ -25,7 +38,7 @@ export const BingoView = () => {
   useEffect(() => {
     setSquares([])
     for (let i = 0; i < squareCount; i++) {
-      setSquares(prevSquares => [...prevSquares, <div className='BingoSquare'>{i + 1}</div>])
+      setSquares(prevSquares => [...prevSquares, <BingoSquare key={i} id={i+1} title={``} status="Incomplete"/>])
     }
   }, [squareCount])
 
@@ -33,9 +46,14 @@ export const BingoView = () => {
     createSquares()
   }, [level])
 
+  useEffect(() => {
+    console.log(squares)
+    console.log("sq changed")
+  }, [squares])
+
   return (
     <div className="bingo-view">
-      <Sidebar />
+      <Sidebar handleComplete={handleComplete}/>
       <div className="main">
         <div>BingoView {level} {squareCount} squares </div>
         <div className='buttonContainer'>
@@ -50,9 +68,9 @@ export const BingoView = () => {
 
         </div>
 
-        <div className={`BingoCard${level}`}>
+{ squares && <div className={`BingoCard${level}`}>
           {squares}
-        </div>
+        </div>}
       </div>
     </div>
   )
