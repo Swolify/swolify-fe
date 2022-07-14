@@ -1,4 +1,5 @@
 import React from 'react'
+import Video from './Video'
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -20,14 +21,17 @@ const OVERLAY_STYLE = {
   zIndex: 1000
 }
 
-export default function Modal({ open, children, onClose }) {
+export default function Modal({ open, activityObject, onClose }) {
   if (!open) return null
   return (
     <>
       <div style={OVERLAY_STYLE} />
       <div style={MODAL_STYLES}>
         <button onClick={onClose}>X</button>
-        {children}
+        {activityObject.title}
+        <Video videoKey={activityObject.link}/>
+        {activityObject.description}
+        <button onClick={onClose}>COMPLETE</button>
       </div>
     </>
   )
