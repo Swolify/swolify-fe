@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Sidebar } from '../Components/Sidebar';
 import "../Styles/BingoView.css"
 import { Modal } from '../Components/Modal';
+import { BingoSquare } from '../Components/BingoSquare';
 
 
 export const BingoView = () => {
-  const [level, setLevel] = useState("")
-  const [squareCount, setSquareCount] = useState(0)
+  const [level, setLevel] = useState("Easy")
+  const [squareCount, setSquareCount] = useState(9)
   const [squares, setSquares] = useState([])
 
   const createSquares = () => {
@@ -25,7 +26,7 @@ export const BingoView = () => {
   useEffect(() => {
     setSquares([])
     for (let i = 0; i < squareCount; i++) {
-      setSquares(prevSquares => [...prevSquares, <div className='BingoSquare'>{i + 1}</div>])
+      setSquares(prevSquares => [...prevSquares, <BingoSquare key={i} id={i+1} title={``} status="Incomplete"/>])
     }
   }, [squareCount])
 
