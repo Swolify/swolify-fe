@@ -1,6 +1,7 @@
 import React from 'react'
 import '../Styles/GameSelectionForm.css'
 import { useState, useEffect } from 'react'
+import { useQuery, useMutation, gql } from '@apollo/client';
 
 export const GameSelectionForm = () => {
 
@@ -12,14 +13,8 @@ const [level, setLevel] = useState("easy")
 const [easyChecked, setEasyChecked] = useState(true)
 const [hardChecked, setHardChecked] = useState(false)
 
-useEffect(() => console.log(upperBody, "Upper Body"))
-useEffect(() => console.log(lowerBody, "Lower Body"))
-useEffect(() => console.log(core, "Core"))
-useEffect(() => console.log(cardio, "Cardio"))
-useEffect(() => console.log(level))
-
 function toggle(value){
-  return { checked: !value.checked, category: value.category};
+  return { checked: !value.checked, category: value.category };
 }
 
 function levelToggle(newLevel) {
@@ -36,6 +31,39 @@ function levelToggle(newLevel) {
   }
 }
 
+
+
+const NEW_GAME = gql`
+mutation createGame($userId: Int!, $categories: [String!], $level: String!){
+  createGame(input: {params: {
+    userId: $userId
+    categories: $categories
+    level: $level
+    }
+   }
+  ){
+    game {
+      id
+      userId
+      gameActivities {
+        id
+        activity {
+          name
+          description
+          duration
+          video
+        }
+      }
+    }
+  }
+}
+`
+
+const [newGame, { data, loading, error }] = useMutation(NEW_GAME)
+  if (loading) console.log('Submitting...');
+  if (error) console.log(`Submission error! ${error.message}`)
+  if (data) console.log(data)
+
 function createGame(event) {
   event.preventDefault()
   const categories = [upperBody, lowerBody, core, cardio]
@@ -45,10 +73,14 @@ function createGame(event) {
       categoriesToSend.push(category.category)
     }
   })
+  console.log(newGame({
+    variables: {
+      userId: 15,
+      categories: categoriesToSend,
+      level: level
+    }
+  }))
 
-
-  console.log(categoriesToSend)
-  console.log(level)
 }
 
   return (
