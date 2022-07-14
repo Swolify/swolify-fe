@@ -10,6 +10,18 @@ export const BingoView = () => {
   const [squareCount, setSquareCount] = useState(9)
   const [squares, setSquares] = useState([])
 
+  const handleComplete = () => {
+    setSquares(prevSquares => {
+      const newSQ = [...prevSquares]
+      const targetIndex = newSQ.findIndex(sq => {
+        return sq.props.status === "Incomplete"
+      })
+      newSQ.splice(targetIndex,1,<BingoSquare key={targetIndex} id={targetIndex+1} title={`Complete`} status="Complete"/>)
+      return newSQ
+    })
+    console.log(squares, "squares")
+  }
+
   const createSquares = () => {
     if (!level) return
     switch (level) {
@@ -34,9 +46,14 @@ export const BingoView = () => {
     createSquares()
   }, [level])
 
+  useEffect(() => {
+    console.log(squares)
+    console.log("sq changed")
+  }, [squares])
+
   return (
     <div className="bingo-view">
-      <Sidebar />
+      <Sidebar handleComplete={handleComplete}/>
       <div className="main">
         <div>BingoView {level} {squareCount} squares </div>
         <div className='buttonContainer'>
@@ -51,9 +68,9 @@ export const BingoView = () => {
 
         </div>
 
-        <div className={`BingoCard${level}`}>
+{ squares && <div className={`BingoCard${level}`}>
           {squares}
-        </div>
+        </div>}
       </div>
     </div>
   )

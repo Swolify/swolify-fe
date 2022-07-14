@@ -21,7 +21,7 @@ const OVERLAY_STYLE = {
   zIndex: 1000
 }
 
-export default function Modal({ open, activityObject, onClose }) {
+export default function Modal({ open, activityObject, onClose, handleComplete }) {
   if (!open) return null
   return (
     <>
@@ -31,7 +31,10 @@ export default function Modal({ open, activityObject, onClose }) {
         {activityObject.title}
         <Video videoKey={activityObject.link}/>
         {activityObject.description}
-        <button onClick={onClose}>COMPLETE</button>
+        <button onClick={() => {
+          handleComplete()
+          onClose()
+          }}>COMPLETE</button>
       </div>
     </>
   )

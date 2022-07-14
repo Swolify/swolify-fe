@@ -5,7 +5,7 @@ import { faAngleRight, faAnglesRight, faDumbbell } from "@fortawesome/free-solid
 import "../Styles/Sidebar.css"
 import Modal  from '../Components/Modal';
 
-export const Sidebar = () => {
+export const Sidebar = (props) => {
     const [activities, setActivities] = useState([])
     const [visabilitySideBar, setVisabilitySideBar] = useState(true)
     const [isOpen, setIsOpen] = useState(false)
@@ -127,7 +127,7 @@ useEffect(() => {
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
             </div>
         </div>  }
-        {activityObject && <Modal activityObject={activityObject} open={isOpen} onClose={() => {
+        {activityObject && <Modal activityObject={activityObject} open={isOpen} handleComplete={props.handleComplete} onClose={() => {
             setId(0)
             setActivityObject({})
             setVisabilitySideBar(true)
