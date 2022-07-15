@@ -12,78 +12,81 @@ export const Sidebar = (props) => {
     const [id, setId] = useState(0)
     const [activityObject, setActivityObject] = useState({})
 
+console.log("props", props)
+   const activitiesArray = props.gameActivities
+   // [
+   //      {
+   //          id: 1,
+   //          title: "pushups",
+   //          link: "dQw4w9WgXcQ",
+   //          description: "Pushups!"
+   //
+   //      },
+   //      {
+   //          id: 2,
+   //          title: "running",
+   //          link: "dQw4w9WgXcQ",
+   //          description: "Pushups!"
+   //      },
+   //      {
+   //          id: 3,
+   //          title: "jumping",
+   //          link: "dQw4w9WgXcQ",
+   //          description: "Pushups!"
+   //      },
+   //      {
+   //          id: 4,
+   //          title: "lunges",
+   //          link: "dQw4w9WgXcQ",
+   //          description: "Pushups!"
+   //      },
+   //      {
+   //          id: 5,
+   //          title: "box jumps",
+   //          link: "dQw4w9WgXcQ",
+   //          description: "Pushups!"
+   //      },
+   //      {
+   //          id: 6,
+   //          title: "kettlebell",
+   //          link: "dQw4w9WgXcQ",
+   //          description: "Pushups!"
+   //      },
+   //      {
+   //          id: 7,
+   //          title: "squats",
+   //          link: "dQw4w9WgXcQ",
+   //          description: "Pushups!"
+   //      },
+   //      {
+   //          id: 8,
+   //          title: "kicks",
+   //          link: "dQw4w9WgXcQ",
+   //          description: "Pushups!"
+   //      },
+   //      {
+   //          id: 9,
+   //          title: "pulldowns",
+   //          link: "dQw4w9WgXcQ",
+   //          description: "Pushups!"
+   //      },
+   //      {
+   //          id: 10,
+   //          title: "pushups",
+   //          link: "dQw4w9WgXcQ",
+   //          description: "Pushups!"
+   //      },
+   //
+   //  ]
 
-   const activitiesArray = [
-        {
-            id: 1,
-            title: "pushups",
-            link: "dQw4w9WgXcQ",
-            description: "Pushups!"
-
-        },
-        {
-            id: 2,
-            title: "running",
-            link: "dQw4w9WgXcQ",
-            description: "Pushups!"
-        },
-        {
-            id: 3,
-            title: "jumping",
-            link: "dQw4w9WgXcQ",
-            description: "Pushups!"
-        },
-        {
-            id: 4,
-            title: "lunges",
-            link: "dQw4w9WgXcQ",
-            description: "Pushups!"
-        },
-        {
-            id: 5,
-            title: "box jumps",
-            link: "dQw4w9WgXcQ",
-            description: "Pushups!"
-        },
-        {
-            id: 6,
-            title: "kettlebell",
-            link: "dQw4w9WgXcQ",
-            description: "Pushups!"
-        },
-        {
-            id: 7,
-            title: "squats",
-            link: "dQw4w9WgXcQ",
-            description: "Pushups!"
-        },
-        {
-            id: 8,
-            title: "kicks",
-            link: "dQw4w9WgXcQ",
-            description: "Pushups!"
-        },
-        {
-            id: 9,
-            title: "pulldowns",
-            link: "dQw4w9WgXcQ",
-            description: "Pushups!"
-        },
-        {
-            id: 10,
-            title: "pushups",
-            link: "dQw4w9WgXcQ",
-            description: "Pushups!"
-        },
-
-    ]
+   console.log("activities array", activitiesArray)
 
     useEffect(() => {
         setActivities([])
         for (let i = 0; i < activitiesArray.length; i++) {
             setActivities(prevExcercises => [...prevExcercises,
                 <div className="excercise-selection">
-                    <ul className="excercise-list">{activitiesArray[i].title}</ul>
+                    <ul className="excercise-list">{activitiesArray[i].activity.name}</ul>
                     <button id={activitiesArray[i].id} onClick={selectExcercise} className="excercise-btn">></button>
                 </div>])
         }
@@ -101,13 +104,13 @@ const selectExcercise = (e) => {
 
 useEffect(() => {
     if (id) {
-        setIsOpen(true) 
+        setIsOpen(true)
         setActivityObject(getActivityDetails())
     }
   },[id])
 
   const getActivityDetails = () => {
-      if (!id) return 
+      if (!id) return
       return activitiesArray.find(activity => activity.id == id)
   }
 
