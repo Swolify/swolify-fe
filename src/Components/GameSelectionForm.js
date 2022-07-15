@@ -3,7 +3,7 @@ import '../Styles/GameSelectionForm.css'
 import { useState, useEffect } from 'react'
 import { useQuery, useMutation, gql } from '@apollo/client';
 
-export const GameSelectionForm = () => {
+export const GameSelectionForm = ({ addGameData }) => {
 
 const [upperBody, setUpperBody] = useState({ checked: false, category: "upper body"})
 const [lowerBody, setLowerBody] = useState({ checked: false, category: "lower body"})
@@ -60,7 +60,7 @@ mutation createGame($userId: Int!, $categories: [String!], $level: String!){
 const [newGame, { data, loading, error }] = useMutation(NEW_GAME)
   if (loading) console.log('Submitting...');
   if (error) console.log(`Submission error! ${error.message}`)
-  if (data) console.log(data)
+  if (data) addGameData(data)
 
 function createGame(event) {
   event.preventDefault()
@@ -77,8 +77,13 @@ function createGame(event) {
       categories: categoriesToSend,
       level: level
     }
-  }))
 
+
+  }))
+  // if(data) {
+  //
+  //   return addGameData(data)
+  // }
 }
 
   return (

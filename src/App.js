@@ -10,12 +10,22 @@ import './App.css';
 
 export const App = () => {
 
+  const [gameData, addGameData] = useState(null)
+  const [gameScreen, setGameScreen] = useState(<DashboardView addGameData={addGameData}/>)
+
+
+  useEffect(() => {
+    gameData && console.log(gameData)
+    gameData && setGameScreen(<BingoView activities={gameData.createGame.game.gameActivities}/>)
+  }, [gameData])
+
+
+
   return (
     <div className="App">
       <Routes>
         <Route exact path="/" element={<ProfileView />} />
-        //<Route exact path="/bingo" element={<BingoView />} />
-        <Route exact path="/dashboard" element={<DashboardView />} />
+        <Route exact path="/game" element={gameScreen} />
       </Routes>
     </div>
   );

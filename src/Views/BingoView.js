@@ -5,10 +5,10 @@ import { Modal } from '../Components/Modal';
 import { BingoSquare } from '../Components/BingoSquare';
 
 
-export const BingoView = () => {
-  const [level, setLevel] = useState("Easy")
-  const [squareCount, setSquareCount] = useState(9)
+export const BingoView = ({ activities }) => {
+  const [squareCount, setSquareCount] = useState(0)
   const [squares, setSquares] = useState([])
+  const [exercises, setExercises] = useState([])
 
   const handleComplete = () => {
     setSquares(prevSquares => {
@@ -22,56 +22,64 @@ export const BingoView = () => {
     console.log(squares, "squares")
   }
 
-  const createSquares = () => {
-    if (!level) return
-    switch (level) {
-      case "Easy":
-        setSquareCount(9)
-        break
-      case "Hard":
-        setSquareCount(16)
-        break
-    }
+  // const createSquares = () => {
+  //   if (!level) return
+  //   switch (level) {
+  //     case "Easy":
+  //       setSquareCount(9)
+  //       break
+  //     case "Hard":
+  //       setSquareCount(16)
+  //       break
+  //   }
+// }
 
 
-  }
+
+
   useEffect(() => {
     setSquares([])
-    for (let i = 0; i < squareCount; i++) {
-      setSquares(prevSquares => [...prevSquares, <BingoSquare key={i} id={i+1} title={``} status="Incomplete"/>])
+    if(squareCount && activities) {
+      for (let i = 0; i < squareCount; i++) {
+        console.log(activities[i])
+        setSquares(prevSquares => [...prevSquares, <BingoSquare key={i} id={i+1} title={activities[i].activity.name} status="Incomplete"/>])
+      }
     }
   }, [squareCount])
 
-  useEffect(() => {
-    createSquares()
-  }, [level])
 
   useEffect(() => {
-    console.log(squares)
+    activities && setSquareCount(activities.length)
+  }, [activities])
+
+  useEffect(() => {
+    activities && console.log("squares", squares)
     console.log("sq changed")
   }, [squares])
 
   return (
     <div className="bingo-view">
-      <Sidebar handleComplete={handleComplete}/>
+      <Sidebar handleComplete={handleComplete} gameActivities={activities}/>
       <div className="main">
-        <div>BingoView {level} {squareCount} squares </div>
-        <div className='buttonContainer'>
+        <div>BingoView {squareCount} squares </div>
 
-          <button onClick={() => {
-            setLevel("Easy")
-          }}>Easy Mode</button>
-          <button onClick={() => {
-            setLevel("Hard")
-          }}>Hard Mode</button>
-          <button>History</button>
 
-        </div>
-
-{ squares && <div className={`BingoCard${level}`}>
+{ squares && <div className={`BingoCard${squareCount}`}>
           {squares}
         </div>}
       </div>
     </div>
   )
 }
+
+// <div className='buttonContainer'>
+//
+//   <button onClick={() => {
+//     setLevel("Easy")
+//   }}>Easy Mode</button>
+//   <button onClick={() => {
+//     setLevel("Hard")
+//   }}>Hard Mode</button>
+//   <button>History</button>
+//
+// </div>

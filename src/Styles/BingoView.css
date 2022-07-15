@@ -1,4 +1,4 @@
-.BingoCardHard {
+.BingoCard16 {
     /* background-color: aqua; */
     width: 90vw;
     height: 90vh;
@@ -10,7 +10,7 @@
     margin-left: 50px;
 }
 
-.BingoCardEasy {
+.BingoCard9 {
   height: 100vh;
   display: inline-grid;
   grid-template-rows: 150px 150px 150px;
@@ -45,9 +45,9 @@
   width: 100%;
   border: 2px solid pink;
   height: 100vh;
-  background-size: cover;                   
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;      
+  background-position: center center;
 }
 
 .main {
