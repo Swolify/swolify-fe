@@ -73,7 +73,7 @@ function createGame(event) {
   })
   console.log(newGame({
     variables: {
-      userId: 15,
+      userId: 16,
       categories: categoriesToSend,
       level: level
     }
