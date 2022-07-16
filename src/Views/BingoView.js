@@ -66,7 +66,6 @@ export const BingoView = ({ activities }) => {
     <div className="bingo-view">
       <Sidebar handleComplete={handleComplete} gameActivities={activities}/>
       <div className="main">
-        <div>BingoView {squareCount} squares </div>
 
 
 { squares && <div className={`BingoCard${squareCount}`}>

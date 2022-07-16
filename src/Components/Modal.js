@@ -21,7 +21,7 @@ const OVERLAY_STYLE = {
   zIndex: 1000
 }
 
-export default function Modal({ open, activityObject, onClose, handleComplete }) {
+export default function Modal({ open, activityObject, onClose, handleComplete, modifySidebar }) {
   if (!open) return null
   return (
     <>
@@ -33,6 +33,7 @@ export default function Modal({ open, activityObject, onClose, handleComplete })
         {activityObject.description}
         <button onClick={() => {
           handleComplete(activityObject.id)
+          modifySidebar()
           onClose()
           }}>COMPLETE</button>
       </div>

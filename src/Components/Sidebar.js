@@ -12,6 +12,7 @@ export const Sidebar = (props) => {
     const [id, setId] = useState(0)
     const [activityObject, setActivityObject] = useState({})
     const [isShuffled, setIsShuffled] = useState(false)
+    const [completedActivities, setCompletedActivities] = useState([])
 
    const activitiesArray = props.gameActivities
   
@@ -48,6 +49,19 @@ useEffect(() => {
     }
   },[id])
 
+  useEffect(() => {
+    setActivities(prevActivities => {
+        const newActivities = []
+        prevActivities.forEach((activity) => {
+            if (completedActivities.includes(activity.name)) {
+                newActivities.push(activity) //grey version
+            } else {
+                newActivities.push(activity)
+            }
+        })
+    }) 
+  },[completedActivities])
+
   const getActivityDetails = () => {
       if (!id) return
       return activitiesArray.find(activity => activity.id == id)
@@ -72,6 +86,12 @@ useEffect(() => {
     console.log("last one", array)
     setIsShuffled(true)
     return array;
+  }
+
+  const modifySidebar = (name) => {
+    setCompletedActivities(prevActivities => {
+        return [...prevActivities, name]
+    })
   }
 
 
