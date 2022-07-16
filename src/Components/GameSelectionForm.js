@@ -65,25 +65,33 @@ const [newGame, { data, loading, error }] = useMutation(NEW_GAME)
 function createGame(event) {
   event.preventDefault()
   const categories = [upperBody, lowerBody, core, cardio]
+  const emptyInput = categories.find(category => category.checked === true)
   const categoriesToSend = []
   categories.forEach((category) => {
     if(category.checked) {
       categoriesToSend.push(category.category)
     }
   })
-  console.log(newGame({
-    variables: {
-      userId: 15,
-      categories: categoriesToSend,
-      level: level
-    }
+
+  if(emptyInput){
+    newGame({
+      variables: {
+        userId: 15,
+        categories: categoriesToSend,
+        level: level
+      }
+    })
+    return
+  } else {}
+
+  checkInput()
+}
 
 
-  }))
-  // if(data) {
-  //
-  //   return addGameData(data)
-  // }
+const checkInput = (categories) => {
+    return(
+      <p>Please select at least one category</p>
+    )
 }
 
   return (
@@ -94,19 +102,19 @@ function createGame(event) {
         <div className="exercise-type">
           <div className="exercise-type-select">
             <label htmlFor="upperbody">Upper Body</label>
-            <input type="checkbox" id="upperbody" name="upperbody" value="Upper Body" onChange={() => setUpperBody(toggle)}/>
+            <input type="checkbox" id="upperbody" name="upperbody" value="Upper Body" onChange={() => setUpperBody(toggle)}required/>
           </div>
           <div className="exercise-type-select">
             <label htmlFor="lowerbody">Lower Body</label>
-            <input type="checkbox" id="lowerbody" name="lowerbody" value="Lower Body" onChange={() => setLowerBody(toggle)}/>
+            <input type="checkbox" id="lowerbody" name="lowerbody" value="Lower Body" onChange={() => setLowerBody(toggle)}required/>
           </div>
           <div className="exercise-type-select">
             <label htmlFor="core">Core</label>
-            <input type="checkbox" id="core" name="core" value="Core" onChange={() => setCore(toggle)}/>
+            <input type="checkbox" id="core" name="core" value="Core" onChange={() => setCore(toggle)} required/>
           </div>
           <div className="exercise-type-select">
             <label htmlFor="cardio">Cardio</label>
-            <input type="checkbox" id="cardio" name="cardio" value="Cardio" onChange={() => setCardio(toggle)}/>
+            <input type="checkbox" id="cardio" name="cardio" value="Cardio" onChange={() => setCardio(toggle)}required/>
           </div>
         </div>
       <p>Select Difficulty Level</p>
@@ -118,6 +126,7 @@ function createGame(event) {
         </div>
         <br></br>
       <button className="start-game-btn" onClick={(event) => createGame(event)}>Start Game</button>
+      {checkInput() }
     </form>
     </>
   )
