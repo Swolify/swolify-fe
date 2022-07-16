@@ -64,6 +64,11 @@ export const BingoView = ({ activities }) => {
     const rows = Object.keys(squareData)
     const cols = Object.keys(squareData[rows[0]])
     let winConditionMet = false
+
+
+
+
+
     rows.forEach(row => {
       let completeCount = 0
       cols.forEach(col => {
@@ -76,7 +81,7 @@ export const BingoView = ({ activities }) => {
 
       })
       if(completeCount >= Math.sqrt(squareCount)){
-        winConditionMet = true
+        //winConditionMet = true
       } else {
         completeCount = 0
       }
@@ -94,13 +99,44 @@ export const BingoView = ({ activities }) => {
 
       })
       if(completeCount >= Math.sqrt(squareCount)){
-        winConditionMet = true
+        //winConditionMet = true
       } else {
         completeCount = 0
       }
     })
 
+    let completeCount = 0
+    for(let i = 0; i < Math.sqrt(squareCount); i++){
+      if(squareData[`row${i}`][`col${i}`].status === "Complete"){
+        completeCount++
+      }
+    }
+    if(completeCount >= Math.sqrt(squareCount)){
+      winConditionMet = true
+    } else {
+      completeCount = 0
+    }
+
+    let rowIndex = 0
+    for(let i = Math.sqrt(squareCount)-1; i >= 0; i--){
+      if(squareData[`row${rowIndex}`][`col${i}`].status === "Complete"){
+        completeCount++
+      }
+      rowIndex++
+      console.log("completeCount", completeCount)
+      console.log("rowCount", rowIndex)
+      console.log("i", i)
+
+    }
+    if(completeCount >= Math.sqrt(squareCount)){
+      winConditionMet = true
+    } else {
+      completeCount = 0
+    }
+
+
     return winConditionMet
+
   }
 
   useEffect(() => {
