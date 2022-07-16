@@ -9,22 +9,21 @@ export const BingoView = ({ activities }) => {
   const [squareCount, setSquareCount] = useState(0)
   const [squares, setSquares] = useState([])
   const [exercises, setExercises] = useState([])
-
+  const [squareData, setSquareData] = useState({})
   const handleComplete = (id) => {
     setSquares(prevSquares => {
       const newSQ = [...prevSquares]
       const targetIndex = newSQ.findIndex(sq => {
-        console.log("sq line 17", sq)
+        // console.log("sq line 17", sq)
         return sq.props.id === id
       })
       const targetElement = newSQ.find(sq => {
         return sq.props.id === id
       })
-      console.log(targetElement, "targetElement")
+      // console.log(targetElement, "targetElement")
       newSQ.splice(targetIndex,1,<BingoSquare key={targetIndex} id={targetElement.props.id} title={targetElement.props.title} status="Complete"/>)
       return newSQ
     })
-    console.log(squares, "squares")
   }
 
   // const createSquares = () => {
@@ -57,15 +56,93 @@ export const BingoView = ({ activities }) => {
       colIndex++
       return acc
     }, {})
-    console.log(squares)
+    setSquareData(squares)
   }
- 
+
+
+  const checkWinCondition = (id) => {
+    const rows = Object.keys(squareData)
+    const cols = Object.keys(squareData[rows[0]])
+    let winConditionMet = false
+
+
+
+
+
+    rows.forEach(row => {
+      let completeCount = 0
+      cols.forEach(col => {
+        if(squareData[row][col].id === id){
+          squareData[row][col].status = "Complete"
+        }
+        if(squareData[row][col].status === "Complete"){
+          completeCount++
+        }
+
+      })
+      if(completeCount >= Math.sqrt(squareCount)){
+        //winConditionMet = true
+      } else {
+        completeCount = 0
+      }
+    })
+
+    cols.forEach(col => {
+      let completeCount = 0
+      rows.forEach(row => {
+        if(squareData[row][col].id === id){
+          squareData[row][col].status = "Complete"
+        }
+        if(squareData[row][col].status === "Complete"){
+          completeCount++
+        }
+
+      })
+      if(completeCount >= Math.sqrt(squareCount)){
+        //winConditionMet = true
+      } else {
+        completeCount = 0
+      }
+    })
+
+    let completeCount = 0
+    for(let i = 0; i < Math.sqrt(squareCount); i++){
+      if(squareData[`row${i}`][`col${i}`].status === "Complete"){
+        completeCount++
+      }
+    }
+    if(completeCount >= Math.sqrt(squareCount)){
+      winConditionMet = true
+    } else {
+      completeCount = 0
+    }
+
+    let rowIndex = 0
+    for(let i = Math.sqrt(squareCount)-1; i >= 0; i--){
+      if(squareData[`row${rowIndex}`][`col${i}`].status === "Complete"){
+        completeCount++
+      }
+      rowIndex++
+      console.log("completeCount", completeCount)
+      console.log("rowCount", rowIndex)
+      console.log("i", i)
+
+    }
+    if(completeCount >= Math.sqrt(squareCount)){
+      winConditionMet = true
+    } else {
+      completeCount = 0
+    }
+
+
+    return winConditionMet
+
+  }
 
   useEffect(() => {
     setSquares([])
     if(squareCount && activities) {
       for (let i = 0; i < squareCount; i++) {
-        console.log(activities[i])
         setSquares(prevSquares => [...prevSquares, <BingoSquare key={i} id={activities[i].id} title={activities[i].activity.name} status="Incomplete"/>])
       }
     }
@@ -77,14 +154,10 @@ export const BingoView = ({ activities }) => {
     activities && setSquareCount(activities.length)
   }, [activities])
 
-  useEffect(() => {
-    activities && console.log("squares", squares)
-    console.log("sq changed")
-  }, [squares])
 
   return (
     <div className="bingo-view">
-      <Sidebar handleComplete={handleComplete} gameActivities={activities}/>
+      <Sidebar handleComplete={handleComplete} gameActivities={activities} checkWinCondition={checkWinCondition}/>
       <div className="main">
 
 
