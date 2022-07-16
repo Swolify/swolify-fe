@@ -43,24 +43,25 @@ const selectExcercise = (e) => {
 }
 
 useEffect(() => {
+    console.log(id)
     if (id) {
         setIsOpen(true)
         setActivityObject(getActivityDetails())
     }
   },[id])
 
-  useEffect(() => {
-    setActivities(prevActivities => {
-        const newActivities = []
-        prevActivities.forEach((activity) => {
-            if (completedActivities.includes(activity.name)) {
-                newActivities.push(activity) //grey version
-            } else {
-                newActivities.push(activity)
-            }
-        })
-    }) 
-  },[completedActivities])
+//   useEffect(() => {
+//     setActivities(prevActivities => {
+//         const newActivities = []
+//         prevActivities.forEach((activity) => {
+//             if (completedActivities.includes(activity.name)) {
+//                 newActivities.push(activity) //grey version
+//             } else {
+//                 newActivities.push(activity)
+//             }
+//         })
+//     }) 
+//   },[completedActivities])
 
   const getActivityDetails = () => {
       if (!id) return

@@ -23,14 +23,15 @@ const OVERLAY_STYLE = {
 
 export default function Modal({ open, activityObject, onClose, handleComplete, modifySidebar }) {
   if (!open) return null
+  console.log(activityObject)
   return (
     <>
       <div style={OVERLAY_STYLE} />
       <div style={MODAL_STYLES}>
         <button onClick={onClose}>X</button>
-        {activityObject.title}
-        <Video videoKey={activityObject.link}/>
-        {activityObject.description}
+        {activityObject.activity.name}
+        <Video videoKey={activityObject.activity.video}/>
+        {activityObject.activity.description}
         <button onClick={() => {
           handleComplete(activityObject.id)
           modifySidebar()
