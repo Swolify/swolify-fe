@@ -39,8 +39,27 @@ export const BingoView = ({ activities }) => {
   //   }
 // }
 
+  const generateSquareData = () => {
+    let colIndex = 0
+    let rowIndex = 0
 
+    const squares = activities.reduce((acc,activity)=> {
+      if (colIndex === Math.sqrt(squareCount)) {
+        colIndex = 0
+        rowIndex++
+      }
 
+      if (!acc[`row${rowIndex}`]) {
+        acc[`row${rowIndex}`] = {}
+      }
+      acc[`row${rowIndex}`][`col${colIndex}`] = activity
+      acc[`row${rowIndex}`][`col${colIndex}`].status = "Incomplete"
+      colIndex++
+      return acc
+    }, {})
+    console.log(squares)
+  }
+ 
 
   useEffect(() => {
     setSquares([])
@@ -50,6 +69,7 @@ export const BingoView = ({ activities }) => {
         setSquares(prevSquares => [...prevSquares, <BingoSquare key={i} id={activities[i].id} title={activities[i].activity.name} status="Incomplete"/>])
       }
     }
+    squareCount && generateSquareData()
   }, [squareCount])
 
 

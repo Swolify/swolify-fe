@@ -6,7 +6,7 @@ export const UserIcon = ({ image }) => {
 
   return (
     <div className='user-icon-background'>
-        <Link to='/dashboard'> <img className='user-icon' src={image} /> </Link>
+        <Link to='/game'> <img className='user-icon' src={image} /> </Link>
     </div>
   )
 }
