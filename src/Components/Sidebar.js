@@ -11,76 +11,11 @@ export const Sidebar = (props) => {
     const [isOpen, setIsOpen] = useState(false)
     const [id, setId] = useState(0)
     const [activityObject, setActivityObject] = useState({})
+    const [isShuffled, setIsShuffled] = useState(false)
+    const [completedActivities, setCompletedActivities] = useState([])
 
-console.log("props", props)
    const activitiesArray = props.gameActivities
-   // [
-   //      {
-   //          id: 1,
-   //          title: "pushups",
-   //          link: "dQw4w9WgXcQ",
-   //          description: "Pushups!"
-   //
-   //      },
-   //      {
-   //          id: 2,
-   //          title: "running",
-   //          link: "dQw4w9WgXcQ",
-   //          description: "Pushups!"
-   //      },
-   //      {
-   //          id: 3,
-   //          title: "jumping",
-   //          link: "dQw4w9WgXcQ",
-   //          description: "Pushups!"
-   //      },
-   //      {
-   //          id: 4,
-   //          title: "lunges",
-   //          link: "dQw4w9WgXcQ",
-   //          description: "Pushups!"
-   //      },
-   //      {
-   //          id: 5,
-   //          title: "box jumps",
-   //          link: "dQw4w9WgXcQ",
-   //          description: "Pushups!"
-   //      },
-   //      {
-   //          id: 6,
-   //          title: "kettlebell",
-   //          link: "dQw4w9WgXcQ",
-   //          description: "Pushups!"
-   //      },
-   //      {
-   //          id: 7,
-   //          title: "squats",
-   //          link: "dQw4w9WgXcQ",
-   //          description: "Pushups!"
-   //      },
-   //      {
-   //          id: 8,
-   //          title: "kicks",
-   //          link: "dQw4w9WgXcQ",
-   //          description: "Pushups!"
-   //      },
-   //      {
-   //          id: 9,
-   //          title: "pulldowns",
-   //          link: "dQw4w9WgXcQ",
-   //          description: "Pushups!"
-   //      },
-   //      {
-   //          id: 10,
-   //          title: "pushups",
-   //          link: "dQw4w9WgXcQ",
-   //          description: "Pushups!"
-   //      },
-   //
-   //  ]
-
-   console.log("activities array", activitiesArray)
-
+  
     useEffect(() => {
         setActivities([])
         for (let i = 0; i < activitiesArray.length; i++) {
@@ -93,7 +28,12 @@ console.log("props", props)
       },[])
 
     useEffect(() => {
-        console.log(activities)
+        if (!isShuffled) {
+            setActivities((prevActivities) => {
+                const shuffledActivities = [...prevActivities]
+                return shuffle(shuffledActivities)
+            })
+        }
       },[activities])
 
 
@@ -109,9 +49,49 @@ useEffect(() => {
     }
   },[id])
 
+  useEffect(() => {
+    setActivities(prevActivities => {
+        const newActivities = []
+        prevActivities.forEach((activity) => {
+            if (completedActivities.includes(activity.name)) {
+                newActivities.push(activity) //grey version
+            } else {
+                newActivities.push(activity)
+            }
+        })
+    }) 
+  },[completedActivities])
+
   const getActivityDetails = () => {
       if (!id) return
       return activitiesArray.find(activity => activity.id == id)
+  }
+
+  function shuffle(array) {
+      console.log("first one", array)
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+
+    console.log("last one", array)
+    setIsShuffled(true)
+    return array;
+  }
+
+  const modifySidebar = (name) => {
+    setCompletedActivities(prevActivities => {
+        return [...prevActivities, name]
+    })
   }
 
 

@@ -10,13 +10,18 @@ export const BingoView = ({ activities }) => {
   const [squares, setSquares] = useState([])
   const [exercises, setExercises] = useState([])
 
-  const handleComplete = () => {
+  const handleComplete = (id) => {
     setSquares(prevSquares => {
       const newSQ = [...prevSquares]
       const targetIndex = newSQ.findIndex(sq => {
-        return sq.props.status === "Incomplete"
+        console.log("sq line 17", sq)
+        return sq.props.id === id
       })
-      newSQ.splice(targetIndex,1,<BingoSquare key={targetIndex} id={targetIndex+1} title={`Complete`} status="Complete"/>)
+      const targetElement = newSQ.find(sq => {
+        return sq.props.id === id
+      })
+      console.log(targetElement, "targetElement")
+      newSQ.splice(targetIndex,1,<BingoSquare key={targetIndex} id={targetElement.props.id} title={targetElement.props.title} status="Complete"/>)
       return newSQ
     })
     console.log(squares, "squares")
@@ -42,7 +47,7 @@ export const BingoView = ({ activities }) => {
     if(squareCount && activities) {
       for (let i = 0; i < squareCount; i++) {
         console.log(activities[i])
-        setSquares(prevSquares => [...prevSquares, <BingoSquare key={i} id={i+1} title={activities[i].activity.name} status="Incomplete"/>])
+        setSquares(prevSquares => [...prevSquares, <BingoSquare key={i} id={activities[i].id} title={activities[i].activity.name} status="Incomplete"/>])
       }
     }
   }, [squareCount])
@@ -61,7 +66,6 @@ export const BingoView = ({ activities }) => {
     <div className="bingo-view">
       <Sidebar handleComplete={handleComplete} gameActivities={activities}/>
       <div className="main">
-        <div>BingoView {squareCount} squares </div>
 
 
 { squares && <div className={`BingoCard${squareCount}`}>
