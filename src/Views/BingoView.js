@@ -42,20 +42,18 @@ export const BingoView = ({ activities }) => {
   const generateSquareData = () => {
     let colIndex = 0
     let rowIndex = 0
-    console.log(activities)
+
     const squares = activities.reduce((acc,activity)=> {
-console.log(acc)
       if (colIndex === Math.sqrt(squareCount)) {
-        console.log("good", Math.sqrt(squareCount))
         colIndex = 0
         rowIndex++
       }
-      console.log(rowIndex, colIndex)
-      console.log(activity)
+
       if (!acc[`row${rowIndex}`]) {
         acc[`row${rowIndex}`] = {}
       }
       acc[`row${rowIndex}`][`col${colIndex}`] = activity
+      acc[`row${rowIndex}`][`col${colIndex}`].status = "Incomplete"
       colIndex++
       return acc
     }, {})
