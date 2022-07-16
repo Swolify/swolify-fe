@@ -33,9 +33,9 @@ export default function Modal({ checkWinCondition, open, activityObject, onClose
         <Video videoKey={activityObject.activity.video}/>
         {activityObject.activity.description}
         <button onClick={() => {
+          onClose()
           handleComplete(activityObject.id)
           //modifySidebar()
-          onClose()
           if(checkWinCondition(activityObject.id)){
             alert("yaaaaaaaaaaaaaaaaaaaaaaaaaaaaay")
           }

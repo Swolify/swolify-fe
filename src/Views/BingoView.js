@@ -81,6 +81,25 @@ export const BingoView = ({ activities }) => {
         completeCount = 0
       }
     })
+
+    cols.forEach(col => {
+      let completeCount = 0
+      rows.forEach(row => {
+        if(squareData[row][col].id === id){
+          squareData[row][col].status = "Complete"
+        }
+        if(squareData[row][col].status === "Complete"){
+          completeCount++
+        }
+
+      })
+      if(completeCount >= Math.sqrt(squareCount)){
+        winConditionMet = true
+      } else {
+        completeCount = 0
+      }
+    })
+
     return winConditionMet
   }
 
