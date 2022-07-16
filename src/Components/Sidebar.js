@@ -15,7 +15,7 @@ export const Sidebar = (props) => {
     const [completedActivities, setCompletedActivities] = useState([])
 
    const activitiesArray = props.gameActivities
-  
+
     useEffect(() => {
         setActivities([])
         for (let i = 0; i < activitiesArray.length; i++) {
@@ -60,7 +60,7 @@ useEffect(() => {
 //                 newActivities.push(activity)
 //             }
 //         })
-//     }) 
+//     })
 //   },[completedActivities])
 
   const getActivityDetails = () => {
@@ -71,14 +71,14 @@ useEffect(() => {
   function shuffle(array) {
       console.log("first one", array)
     let currentIndex = array.length,  randomIndex;
-  
+
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
-  
+
       // Pick a remaining element.
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
-  
+
       // And swap it with the current element.
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
@@ -111,7 +111,7 @@ useEffect(() => {
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
             </div>
         </div>  }
-        {activityObject && <Modal activityObject={activityObject} open={isOpen} handleComplete={props.handleComplete} onClose={() => {
+        {activityObject && <Modal activityObject={activityObject} open={isOpen} handleComplete={props.handleComplete} checkWinCondition={props.checkWinCondition} onClose={() => {
             setId(0)
             setActivityObject({})
             setVisabilitySideBar(true)
