@@ -32,7 +32,7 @@ export default function Modal({ open, activityObject, onClose, handleComplete })
         <Video videoKey={activityObject.link}/>
         {activityObject.description}
         <button onClick={() => {
-          handleComplete()
+          handleComplete(activityObject.id)
           onClose()
           }}>COMPLETE</button>
       </div>
