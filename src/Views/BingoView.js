@@ -84,7 +84,7 @@ export const BingoView = ({ activities }) => {
 
       })
       if(completeCount >= Math.sqrt(squareCount)){
-        //winConditionMet = true
+        winConditionMet = true
       } else {
         completeCount = 0
       }
@@ -102,7 +102,7 @@ export const BingoView = ({ activities }) => {
 
       })
       if(completeCount >= Math.sqrt(squareCount)){
-        //winConditionMet = true
+        winConditionMet = true
       } else {
         completeCount = 0
       }
