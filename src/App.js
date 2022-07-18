@@ -11,7 +11,8 @@ import './App.css';
 export const App = () => {
 
   const [gameData, addGameData] = useState(null)
-  const [gameScreen, setGameScreen] = useState(<DashboardView addGameData={addGameData}/>)
+  const [gameScreen, setGameScreen] = useState(<DashboardView addGameData={addGameData} />)
+
 
 
   useEffect(() => {

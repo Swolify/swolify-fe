@@ -1,9 +1,10 @@
 import React from 'react'
 import '../Styles/GameSelectionForm.css'
 import { useState, useEffect } from 'react'
+import { Route } from 'react-router-dom'
 import { useQuery, useMutation, gql } from '@apollo/client';
 
-export const GameSelectionForm = ({ addGameData }) => {
+export const GameSelectionForm = ({ addGameData, setError }) => {
 
 const [upperBody, setUpperBody] = useState({ checked: false, category: "upper body"})
 const [lowerBody, setLowerBody] = useState({ checked: false, category: "lower body"})
@@ -12,8 +13,16 @@ const [cardio, setCardio] = useState({ checked: false, category: "cardio"})
 const [level, setLevel] = useState("easy")
 const [easyChecked, setEasyChecked] = useState(true)
 const [hardChecked, setHardChecked] = useState(false)
+const [noCategories, setNoCategories] = useState(false)
 
 function toggle(value){
+  const categories = [upperBody, lowerBody, core, cardio]
+  categories.forEach((category) => {
+    if(!category.checked) {
+      setNoCategories(false)
+    }
+  })
+
   return { checked: !value.checked, category: value.category };
 }
 
@@ -59,7 +68,7 @@ mutation createGame($userId: Int!, $categories: [String!], $level: String!){
 
 const [newGame, { data, loading, error }] = useMutation(NEW_GAME)
   if (loading) console.log('Submitting...');
-  if (error) console.log(`Submission error! ${error.message}`)
+  if (error) console.log("error!", error.message)
   if (data) addGameData(data)
 
 function createGame(event) {
@@ -71,19 +80,27 @@ function createGame(event) {
       categoriesToSend.push(category.category)
     }
   })
-  console.log(newGame({
+  if(categoriesToSend.length) {
+    newGame({
     variables: {
       userId: 16,
       categories: categoriesToSend,
       level: level
     }
+  })}
+  if(!categoriesToSend.length) {
+    setNoCategories(true)
+  }
 
+}
 
-  }))
-  // if(data) {
-  //
-  //   return addGameData(data)
-  // }
+const noCategoriesMessage = () => {
+  if(noCategories) {
+    return (
+      <p>Please Select At Least One Exercise Category</p>
+    )
+  }
+
 }
 
   return (
@@ -118,7 +135,9 @@ function createGame(event) {
         </div>
         <br></br>
       <button className="start-game-btn" onClick={(event) => createGame(event)}>Start Game</button>
+      {noCategoriesMessage()}
     </form>
+
     </>
   )
 }
