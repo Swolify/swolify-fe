@@ -19,13 +19,19 @@ export const Sidebar = (props) => {
     useEffect(() => {
         setActivities([])
         for (let i = 0; i < activitiesArray.length; i++) {
-            setActivities(prevExcercises => [...prevExcercises,
-                <div className="excercise-selection">
-                    <ul className="excercise-list">{activitiesArray[i].activity.name}</ul>
-                    <button id={activitiesArray[i].id} onClick={selectExcercise} className="excercise-btn">></button>
-                </div>])
+            if (props.gameActivities[i].status === "Incomplete") {
+                setActivities(prevExcercises => [...prevExcercises,
+                    <div className="excercise-selection">
+                        <button className="excercise-list" id={activitiesArray[i].id} onClick={selectExcercise}>{activitiesArray[i].activity.name} ></button>
+                    </div>])
+            } else  {
+                setActivities(prevExcercises => [...prevExcercises,
+                    <div className="excercise-selection">
+                        <button disabled={true} className="excercise-list" id={activitiesArray[i].id} onClick={selectExcercise}>{activitiesArray[i].activity.name} ></button>
+                    </div>])
+            }
         }
-      },[])
+      },[activities])
 
     useEffect(() => {
         if (!isShuffled) {
@@ -43,7 +49,6 @@ const selectExcercise = (e) => {
 }
 
 useEffect(() => {
-    console.log(id)
     if (id) {
         setIsOpen(true)
         setActivityObject(getActivityDetails())
@@ -84,14 +89,13 @@ useEffect(() => {
         array[randomIndex], array[currentIndex]];
     }
 
-    console.log("last one", array)
     setIsShuffled(true)
     return array;
   }
 
-  const modifySidebar = (name) => {
+  const collectCompletedActivities = (activity) => {
     setCompletedActivities(prevActivities => {
-        return [...prevActivities, name]
+        return [...prevActivities, activity]
     })
   }
 
@@ -111,7 +115,7 @@ useEffect(() => {
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
             </div>
         </div>  }
-        {activityObject && <Modal activityObject={activityObject} open={isOpen} handleComplete={props.handleComplete} checkWinCondition={props.checkWinCondition} onClose={() => {
+        {activityObject && <Modal collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={props.handleComplete} checkWinCondition={props.checkWinCondition} onClose={() => {
             setId(0)
             setActivityObject({})
             setVisabilitySideBar(true)
