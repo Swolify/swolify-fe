@@ -3,13 +3,15 @@ import { Sidebar } from '../Components/Sidebar';
 import "../Styles/BingoView.css"
 import { Modal } from '../Components/Modal';
 import { BingoSquare } from '../Components/BingoSquare';
+import { useQuery, useMutation, gql } from '@apollo/client';
 
 
-export const BingoView = ({ activities }) => {
+export const BingoView = ({ activities, gameId }) => {
   const [squareCount, setSquareCount] = useState(0)
   const [squares, setSquares] = useState([])
   const [exercises, setExercises] = useState([])
   const [squareData, setSquareData] = useState({})
+  const [completedExercises, completeExercise] = useState([])
   const handleComplete = (id) => {
     setSquares(prevSquares => {
       const newSQ = [...prevSquares]
@@ -134,7 +136,6 @@ export const BingoView = ({ activities }) => {
       completeCount = 0
     }
 
-
     return winConditionMet
 
   }
@@ -154,11 +155,43 @@ export const BingoView = ({ activities }) => {
     activities && setSquareCount(activities.length)
   }, [activities])
 
+  const COMPLETE_GAME = gql`
+  mutation modifyGame($id: Int!, $win: Boolean!, $activities: [String!]){
+    modifyGame(input: {params: {
+      id: $id
+      win: $win
+      activities: $activities
+      }
+     }
+    )
+    success
+  }
+  `
+  const [completeGame, { data, loading, error }] = useMutation(COMPLETE_GAME)
+    if (loading) console.log('Submitting...');
+    if (error) console.log("error!", error.message)
+    if (data) console.log(data)
 
+    if(checkWinCondition === true){
+      completeGame({
+      variables: {
+        id: gameId,
+        win: true,
+        activities: ['drink water']
+      }
+    })
+    }
   return (
     <div className="bingo-view">
       <Sidebar handleComplete={handleComplete} gameActivities={activities} checkWinCondition={checkWinCondition}/>
       <div className="main">
+      <button onClick={() => completeGame({
+      variables: {
+        id: gameId,
+        win: true,
+        activities: ['drink water']
+      }
+    })}>Complete Game</button>
 
 
 { squares && <div className={`BingoCard${squareCount}`}>
@@ -168,6 +201,9 @@ export const BingoView = ({ activities }) => {
     </div>
   )
 }
+
+
+
 
 // <div className='buttonContainer'>
 //
