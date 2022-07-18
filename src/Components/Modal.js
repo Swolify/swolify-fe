@@ -21,7 +21,7 @@ const OVERLAY_STYLE = {
   zIndex: 1000
 }
 
-export default function Modal({ checkWinCondition, open, activityObject, onClose, handleComplete, modifySidebar }) {
+export default function Modal({ checkWinCondition, open, activityObject, onClose, handleComplete, collectCompletedActivities }) {
   if (!open) return null
   console.log(activityObject)
   return (
@@ -35,7 +35,7 @@ export default function Modal({ checkWinCondition, open, activityObject, onClose
         <button onClick={() => {
           onClose()
           handleComplete(activityObject.id)
-          //modifySidebar()
+          collectCompletedActivities(activityObject)
           if(checkWinCondition(activityObject.id)){
             alert("yaaaaaaaaaaaaaaaaaaaaaaaaaaaaay")
           }
