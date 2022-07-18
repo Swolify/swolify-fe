@@ -28,7 +28,8 @@
 }
 
 .swolify-sidebar-name,
-.activity-list {
+.activity-list,
+.excercise-list {
     font-family: 'Press Start 2P', cursive;
 }
 
@@ -44,7 +45,7 @@
     width: 100%;
 }
 
-.excercise-btn {
+.excercise-list {
     display: flex;
     border:none;
     background-color:transparent;
@@ -148,3 +149,4 @@
     margin: 1.5em; 
     transition: all .3s ease-in-out;
 }
+
