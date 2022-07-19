@@ -1,18 +1,21 @@
 import React from 'react';
 import '../Styles/GameStats.css'
 
-export const GameStats = () => {
+export const GameStats = ({user}) => {
 
-  return (
-    <section className="game-summary-section">
-      <div>
-        <p>125</p>
-        <h3>Games</h3>
-      </div>
-      <div>
-        <p>523</p>
-        <h3>Activities</h3>
-      </div>
-    </section>
-  )
+  if(user){
+    console.log(user)
+    return (
+      <section className="game-summary-section">
+        <div>
+          <p>{user.gameCount}</p>
+          <h3>Games</h3>
+        </div>
+        <div>
+          <p>{user.activityCount}</p>
+          <h3>Activities</h3>
+        </div>
+      </section>
+    )
+  }
 }
