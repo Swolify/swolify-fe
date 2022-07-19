@@ -164,7 +164,14 @@ export const BingoView = ({ activities, gameId }) => {
       }
      }
     )
-    success
+    {
+           game {
+             id
+             win
+             level
+           }
+           success
+         }
   }
   `
   const [completeGame, { data, loading, error }] = useMutation(COMPLETE_GAME)
@@ -181,15 +188,16 @@ export const BingoView = ({ activities, gameId }) => {
       }
     })
     }
+    console.log('gameID', gameId)
   return (
     <div className="bingo-view">
       <Sidebar handleComplete={handleComplete} gameActivities={activities} checkWinCondition={checkWinCondition}/>
       <div className="main">
       <button onClick={() => completeGame({
       variables: {
-        id: gameId,
+        id: parseInt(gameId),
         win: true,
-        activities: ['drink water']
+        activities: ['Drink Water']
       }
     })}>Complete Game</button>
 
