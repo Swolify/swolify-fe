@@ -18,8 +18,10 @@ export const DashboardView = ({ addGameData, user, setUser, userId}) => {
           losses
           gameCount
           activityCount
-          activities {
-            name
+          games{
+            completedActivities {
+              name
+            }
           }
         }
       }
