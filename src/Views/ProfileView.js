@@ -17,47 +17,22 @@ const ALL_USERS = gql`
     }
   `
 
-const USER = gql`
-  query fetchUser($id: Int!) {
-    fetchUser(id: $id) {
-      name
-      email
-      wins
-      losses
-      gameCount
-      activityCount
-      activities {
-        name
-      }
-    }
-  }
-`
 
-
-export const ProfileView = ({setUser}) => {
-  const animals = [bunny, cow, dog, othercow]
-  const allIcons = animals.map((animal) => <UserIcon image={animal} key={animal}/>)
-
-  const user= useQuery(USER)
-    if (user.loading) console.log('Submitting...');
-    if (user.error) console.log("error!", )
-    if (user.data) console.log()
-
-//
-// console.log(useQuery(ALL_USERS))
-console.log(user({
-  variables: {
-    id: 16,
-  }
-}))
+export const ProfileView = ({setUserId, userId}) => {
+  const animals = [bunny, cow, dog, othercow, bunny, cow, dog, othercow, bunny, cow, dog, othercow]
+  let allIcons
+  let { data, loading, error } = useQuery(ALL_USERS)
+    if (loading) console.log('Loading...');
+    if (error) console.log("error!", error.message)
+    if (data) allIcons = data.fetchAllUsers.map((user, index) => <UserIcon setUserId={setUserId} image={animals[index]} id={user.id} key={user.id}/>)
 
   return (
     <section className='profile-view-section'>
       <div className='headers'>
         <h1 className='landing-header'>Swolify</h1>
       </div>
+      {allIcons}
       <div className="icons-section">
-        {allIcons}
       </div>
       <h2 className="profile-instructions">Select A Profile</h2>
     </section>
