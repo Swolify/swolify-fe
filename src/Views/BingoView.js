@@ -9,24 +9,29 @@ import { useQuery, useMutation, gql } from '@apollo/client';
 export const BingoView = ({ activities, gameId }) => {
   const [squareCount, setSquareCount] = useState(0)
   const [squares, setSquares] = useState([])
-  const [exercises, setExercises] = useState([])
+  const [completedExcercises, setCompletedExercises] = useState([])
   const [squareData, setSquareData] = useState({})
-  const [completedExercises, completeExercise] = useState([])
+
+
+
+
   const handleComplete = (id) => {
     setSquares(prevSquares => {
       const newSQ = [...prevSquares]
       const targetIndex = newSQ.findIndex(sq => {
-        // console.log("sq line 17", sq)
+
         return sq.props.id === id
       })
       const targetElement = newSQ.find(sq => {
         return sq.props.id === id
       })
-      // console.log(targetElement, "targetElement")
+      console.log(targetElement, "targetElement")
       newSQ.splice(targetIndex,1,<BingoSquare key={targetIndex} id={targetElement.props.id} title={targetElement.props.title} status="Complete"/>)
+      setCompletedExercises([...completedExcercises, newSQ])
       return newSQ
     })
   }
+
 
   // const createSquares = () => {
   //   if (!level) return
@@ -83,7 +88,7 @@ export const BingoView = ({ activities, gameId }) => {
 
       })
       if(completeCount >= Math.sqrt(squareCount)){
-        //winConditionMet = true
+        winConditionMet = true
       } else {
         completeCount = 0
       }
@@ -101,7 +106,7 @@ export const BingoView = ({ activities, gameId }) => {
 
       })
       if(completeCount >= Math.sqrt(squareCount)){
-        //winConditionMet = true
+        winConditionMet = true
       } else {
         completeCount = 0
       }
@@ -125,9 +130,6 @@ export const BingoView = ({ activities, gameId }) => {
         completeCount++
       }
       rowIndex++
-      console.log("completeCount", completeCount)
-      console.log("rowCount", rowIndex)
-      console.log("i", i)
 
     }
     if(completeCount >= Math.sqrt(squareCount)){

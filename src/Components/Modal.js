@@ -21,21 +21,21 @@ const OVERLAY_STYLE = {
   zIndex: 1000
 }
 
-export default function Modal({ checkWinCondition, open, activityObject, onClose, handleComplete, modifySidebar }) {
+export default function Modal({ checkWinCondition, open, activityObject, onClose, handleComplete, collectCompletedActivities }) {
   if (!open) return null
   console.log(activityObject)
   return (
     <>
       <div style={OVERLAY_STYLE} />
       <div style={MODAL_STYLES}>
-        <button onClick={onClose}>X</button>
+        <button onClick={() => onClose}>X</button>
         {activityObject.activity.name}
         <Video videoKey={activityObject.activity.video}/>
         {activityObject.activity.description}
         <button onClick={() => {
           onClose()
           handleComplete(activityObject.id)
-          //modifySidebar()
+          collectCompletedActivities(activityObject)
           if(checkWinCondition(activityObject.id)){
             alert("yaaaaaaaaaaaaaaaaaaaaaaaaaaaaay")
           }
