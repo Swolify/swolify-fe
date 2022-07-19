@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link }from "react-router-dom"
 import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleRight, faAnglesRight, faDumbbell } from "@fortawesome/free-solid-svg-icons"
@@ -19,19 +20,12 @@ export const Sidebar = (props) => {
     useEffect(() => {
         setActivities([])
         for (let i = 0; i < activitiesArray.length; i++) {
-            if (props.gameActivities[i].status === "Incomplete") {
-                setActivities(prevExcercises => [...prevExcercises,
+          setActivities(prevExcercises => [...prevExcercises,
                     <div className="excercise-selection">
                         <button className="excercise-list" id={activitiesArray[i].id} onClick={selectExcercise}>{activitiesArray[i].activity.name} ></button>
                     </div>])
-            } else  {
-                setActivities(prevExcercises => [...prevExcercises,
-                    <div className="excercise-selection">
-                        <button disabled={true} className="excercise-list" id={activitiesArray[i].id} onClick={selectExcercise}>{activitiesArray[i].activity.name} ></button>
-                    </div>])
             }
-        }
-      },[activities])
+      }, [activitiesArray])
 
     useEffect(() => {
         if (!isShuffled) {
@@ -46,6 +40,7 @@ export const Sidebar = (props) => {
 const selectExcercise = (e) => {
     setVisabilitySideBar(false)
     setId(e.target.id)
+    e.currentTarget.disabled = true
 }
 
 useEffect(() => {
@@ -55,18 +50,15 @@ useEffect(() => {
     }
   },[id])
 
-//   useEffect(() => {
-//     setActivities(prevActivities => {
-//         const newActivities = []
-//         prevActivities.forEach((activity) => {
-//             if (completedActivities.includes(activity.name)) {
-//                 newActivities.push(activity) //grey version
-//             } else {
-//                 newActivities.push(activity)
-//             }
-//         })
-//     })
-//   },[completedActivities])
+  // useEffect(() => {
+  //   props.winConditionMet && props.completeGame({
+  //   variables: {
+  //     id: parseInt(props.gameId),
+  //     win: true,
+  //     activities: completedActivities
+  //   }
+  // })
+  // },[completedActivities])
 
   const getActivityDetails = () => {
       if (!id) return
@@ -95,10 +87,34 @@ useEffect(() => {
 
   const collectCompletedActivities = (activity) => {
     setCompletedActivities(prevActivities => {
-        return [...prevActivities, activity]
+        return [...prevActivities, parseInt(activity.id)]
     })
   }
 
+  const completeSidebar = (id) => {
+    props.handleComplete(id)
+    const targetIndex = activitiesArray.findIndex(activity => {
+      console.log('Activity', activity)
+      return activity.id == id
+    })
+    console.log('INDEX',targetIndex)
+
+
+    // (prevSquares => {
+    //   const newSQ = [...prevSquares]
+    //   const targetIndex = newSQ.findIndex(sq => {
+    //
+    //     return sq.props.id === id
+    //   })
+    //   const targetElement = newSQ.find(sq => {
+    //     return sq.props.id === id
+    //   })
+    //   console.log(targetElement, "targetElement")
+    //   newSQ.splice(targetIndex,1,<BingoSquare key={targetIndex} id={targetElement.props.id} title={targetElement.props.title} status="Complete"/>)
+    //   setCompletedExercises([...completedExcercises, newSQ])
+    //   return newSQ
+    // })
+  }
 
   return (
       <>
@@ -106,7 +122,7 @@ useEffect(() => {
         <div className="sidebar-visable">
             <div className="icon-section-sidebar">
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
-                <div className="swolify-sidebar-name">SWOLIFY</div>
+                <div className="swolify-sidebar-name"><Link to="/">SWOLIFY</Link></div>
             </div>
             <ul className="activity-list">{activities}</ul>
         </div> :
@@ -114,8 +130,10 @@ useEffect(() => {
             <div className="icon-section-sidebar">
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
             </div>
+            <ul className="activity-list-hidden">{activities}</ul>
         </div>  }
-        {activityObject && <Modal collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={props.handleComplete} checkWinCondition={props.checkWinCondition} onClose={() => {
+        {activityObject && <Modal collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={completeSidebar} checkWinCondition={props.checkWinCondition}
+        gameId={props.gameId} completeGame={props.completeGame} completedActivities={completedActivities} onClose={() => {
             setId(0)
             setActivityObject({})
             setVisabilitySideBar(true)

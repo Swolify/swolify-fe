@@ -16,7 +16,8 @@ export const App = () => {
 
   useEffect(() => {
     gameData && console.log(gameData)
-    gameData && userId && setGameScreen(<BingoView activities={gameData.createGame.game.gameActivities}/>)
+    gameData && userId && setGameScreen(<BingoView
+      addGameData={addGameData} activities={gameData.createGame.game.gameActivities} gameId={gameData.createGame.game.id}/>)
   }, [gameData])
 
   useEffect(() => {
