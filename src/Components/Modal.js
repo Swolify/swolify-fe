@@ -23,7 +23,6 @@ const OVERLAY_STYLE = {
 
 export default function Modal({ checkWinCondition, open, activityObject, onClose, handleComplete, collectCompletedActivities }) {
   if (!open) return null
-  console.log(activityObject)
   return (
     <>
       <div style={OVERLAY_STYLE} />
