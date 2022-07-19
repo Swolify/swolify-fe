@@ -4,9 +4,8 @@ import { Route, Routes, Link, NavLink } from 'react-router-dom';
 import { BingoView } from './Views/BingoView';
 import { ProfileView } from './Views/ProfileView';
 import { DashboardView } from './Views/DashboardView'
-
+import { HistoryContainer } from './Components/HistoryContainer'
 import './App.css';
-
 
 export const App = () => {
 
@@ -14,7 +13,6 @@ export const App = () => {
   const [userId, setUserId] = useState(null)
   const [gameData, addGameData] = useState(null)
   const [gameScreen, setGameScreen] = useState("")
-
 
   useEffect(() => {
     gameData && console.log(gameData)
@@ -27,6 +25,7 @@ export const App = () => {
   }, [userId])
 
   useEffect(() => {
+    user && setGameScreen(<HistoryContainer user={user} />)
     user && setGameScreen(<DashboardView user={user} setUser={setUser} userId={userId} addGameData={addGameData} />)
   }, [user])
 

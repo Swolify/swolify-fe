@@ -5,8 +5,7 @@ import { GameStats } from '../Components/GameStats';
 import { GameSelectionForm } from '../Components/GameSelectionForm'
 import { HistoryContainer } from '../Components/HistoryContainer'
 import '../Styles/DashboardView.css'
-import { useQuery, useMutation, gql } from '@apollo/client';
-
+import { useQuery, gql } from '@apollo/client';
 
 export const DashboardView = ({ addGameData, user, setUser, userId}) => {
     const USER = gql`
@@ -19,6 +18,8 @@ export const DashboardView = ({ addGameData, user, setUser, userId}) => {
           gameCount
           activityCount
           games{
+            id
+            win
             completedActivities {
               name
             }
@@ -32,10 +33,6 @@ export const DashboardView = ({ addGameData, user, setUser, userId}) => {
     if (error) console.log("error!", error.message)
     if (data) setUser(data.fetchUser)
 
-
-
-    console.log(userId)
-
   return (
     <>
     <h1>Dashboard</h1>
@@ -45,9 +42,7 @@ export const DashboardView = ({ addGameData, user, setUser, userId}) => {
       <GameStats user={user}/>
     </section>
     <h2>History</h2>
-    <HistoryContainer/>
+    <HistoryContainer user={user}/>
     </>
   )
-
-
 }

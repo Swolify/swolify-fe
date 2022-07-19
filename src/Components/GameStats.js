@@ -4,7 +4,6 @@ import '../Styles/GameStats.css'
 export const GameStats = ({user}) => {
 
   if(user){
-    console.log(user)
     return (
       <section className="game-summary-section">
         <div>
