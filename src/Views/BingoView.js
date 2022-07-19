@@ -181,19 +181,8 @@ export const BingoView = ({ activities, gameId }) => {
     if (error) console.log("error!", error.message)
     if (data) console.log(data)
 
-    if(checkWinCondition === true){
-      completeGame({
-      variables: {
-        id: gameId,
-        win: true,
-        activities: ['drink water']
-      }
-    })
-    }
-    console.log('gameID', gameId)
   return (
     <div className="bingo-view">
-      <Sidebar handleComplete={handleComplete} gameActivities={activities} checkWinCondition={checkWinCondition}/>
       <div className="main">
       <button onClick={() => completeGame({
       variables: {
@@ -211,18 +200,3 @@ export const BingoView = ({ activities, gameId }) => {
     </div>
   )
 }
-
-
-
-
-// <div className='buttonContainer'>
-//
-//   <button onClick={() => {
-//     setLevel("Easy")
-//   }}>Easy Mode</button>
-//   <button onClick={() => {
-//     setLevel("Hard")
-//   }}>Hard Mode</button>
-//   <button>History</button>
-//
-// </div>

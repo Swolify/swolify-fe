@@ -83,7 +83,7 @@ function createGame(event) {
   if(categoriesToSend.length) {
     newGame({
     variables: {
-      userId: 19,
+      userId: 1,
       categories: categoriesToSend,
       level: level
     }

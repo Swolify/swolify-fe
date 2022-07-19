@@ -78,11 +78,11 @@
     transition: all 1s ease;
     display: block;
     margin-left: -2px;
-  } 
+  }
 
 .fa-angles-right:hover {
     display: block;
-}  
+}
 
 /* SIDEBAR NEON SECTION */
 
@@ -146,7 +146,10 @@
     height: 100vh;
     width: 5vw;
     background-color: #FFF;
-    margin: 1.5em; 
+    margin: 1.5em;
     transition: all .3s ease-in-out;
 }
 
+.activity-list-hidden {
+  display: none;
+}

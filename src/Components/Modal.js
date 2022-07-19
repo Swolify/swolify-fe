@@ -28,7 +28,6 @@ export default function Modal({ checkWinCondition, open, activityObject, onClose
     <>
       <div style={OVERLAY_STYLE} />
       <div style={MODAL_STYLES}>
-        <button onClick={() => onClose}>X</button>
         {activityObject.activity.name}
         <Video videoKey={activityObject.activity.video}/>
         {activityObject.activity.description}
