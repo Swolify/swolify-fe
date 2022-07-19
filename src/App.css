@@ -1,7 +1,8 @@
 .App {
   text-align: center;
   display: flex;
+  width: 100%;
   align-items: center;
   flex-direction: column;
-  background-color: blanchedalmond;
+  background-color: #000;
 }

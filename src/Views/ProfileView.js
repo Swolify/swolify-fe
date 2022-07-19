@@ -1,5 +1,7 @@
 import React from 'react'
 import { UserIcon } from '../Components/UserIcon'
+import { Logo } from '../Components/Logo'
+import { StartButton } from '../Components/StartButton'
 import '../Styles/ProfileView.css'
 import bunny from '../Images/bunny-icon.png'
 import cow from '../Images/cow-icon.png'
@@ -18,7 +20,8 @@ const allIcons = animals.map((animal) => <UserIcon image={animal} key={animal}/>
   return (
     <section className='profile-view-section'>
       <div className='headers'>
-        <h1 className='landing-header'>Swolify</h1>
+        <Logo />
+        <StartButton />
       </div>
       <div className="icons-section">
         {allIcons}

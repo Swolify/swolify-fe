@@ -1,0 +1,63 @@
+.start-section {
+    margin-top: 3em;
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.press-start-phrase {
+    color: #fff;
+    width: 100%;
+    font-size: 3em;
+    padding-top: 1em;
+}
+
+.press-start-phrase {
+
+    animation: opacity 3s ease-in-out infinite;
+    opacity: 1;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.start-button {
+    margin-top: 3em;
+    font-family: 'Press Start 2P', cursive;
+    justify-content: center;
+    cursor: pointer;
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+      
+.start-button:hover {
+    background-color: #3e8e41
+}
+      
+.start-button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
