@@ -1,39 +1,34 @@
 import React from 'react'
 import '../Styles/HistoryContainer.css'
 
-export const HistoryContainer = () => {
+export const HistoryContainer = ({user}) => {
 
-const games = [{gameId: 1, activ: ['sit ups','sit ups','sit ups','sit ups' ], outcome: "win"},
-               {gameId: 2, activ: ['Burpee', 'Burpee', 'Burpee', 'Burpee'], outcome: "loss"},
-               {gameId: 3, activ: ['squats', 'squats', 'squats', 'squats'], outcome: "win"},
-               {gameId: 4, activ: ['sit ups','sit ups','sit ups','sit ups' ], outcome: "win"},
-               {gameId: 5, activ: ['Burpee', 'Burpee', 'Burpee', 'Burpee'], outcome: "loss"},
-               {gameId: 6, activ: ['squats', 'squats', 'squats', 'squats'], outcome: "win"}]
-
+  const displayWin = (win) => {
+    if(win){
+      return <p>Outcome: Win!</p>
+    }
+    return <p>Outcome: Loss!</p>
+  }
   const generateHistoryCards = () => {
-    const historyCards = games.map(game => {
-    const activities = game.activ.map(activity => {
+    if(user){
       return (
-        <li>{activity}</li>
+        user.games.map(game =>{
+          const activities = game.completedActivities.map(activity => <p key={activity.name}>{activity.name}</p>)
+          return (
+            <div key={game.id} className="history-card">
+              <p>Game Number: {game.id}</p>
+              {displayWin(game.win)}
+              <ul className="activity-history">
+                {activities}
+              </ul>
+            </div>
+          )
+        })
       )
-    })
-
-      return (
-        <div className="history-card">
-          <p>Game number: {game.gameId}</p>
-          <p>Outcome: {game.outcome}</p>
-          <ul className="activity-history">
-            {activities}
-          </ul>
-          <hr></hr>
-        </div>
-      )
-    })
-    return historyCards
+    }
   }
 
   return (
-
     <section className="history-container">
       {generateHistoryCards()}
     </section>

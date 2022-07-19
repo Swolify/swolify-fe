@@ -3,7 +3,6 @@ import '../Styles/UserIcon.css'
 import { Link } from 'react-router-dom'
 import { gql } from '@apollo/client';
 
-
 export const UserIcon = ({ image, id, setUserId }) => {
 
   return (
