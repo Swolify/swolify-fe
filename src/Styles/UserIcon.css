@@ -1,21 +1,39 @@
 .user-icon {
-  border-radius: 100%;
+  /* border-radius: 100%; */
   width: 15rem;
   height: 15rem;
 }
 
 .user-icon-background:hover {
   cursor: pointer;
-  box-shadow: 1px 4px 11px 4px black;
+  /* box-shadow: 1px 4px 11px 4px black; */
 }
 
 .user-icon-background {
-  width: 17rem;
+  /* width: 17rem;
   height: 17rem;
   border-radius: 100%;
   background-color: #ffe200;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 9px 7px 11px 4px black;
+  box-shadow: 9px 7px 11px 4px black; */
 }
+
+.icons-section {
+  animation-duration: 3s;
+  animation-name: profileslide;
+}
+
+@keyframes profileslide {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+

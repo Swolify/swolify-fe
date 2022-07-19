@@ -21,5 +21,25 @@
   flex-direction: column;
 }
 
-.user-icon-background {
+.profile-instructions {
+  color: #FFF;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3em;
+}
+
+.profile-instructions {
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
 }

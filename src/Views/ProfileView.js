@@ -9,6 +9,7 @@ import bunny from '../Images/bunny-icon.png'
 import cow from '../Images/cow-icon.png'
 import dog from '../Images/dog-icon.png'
 import othercow from '../Images/other-cow-icon.png'
+import { LoadingScreen } from '../Components/LoadingScreen'
 
 export const ProfileView = () => {
   const [profilesScreen, setProfilesScreen] = useState(false)
@@ -30,10 +31,10 @@ const allIcons = animals.map((animal) => <UserIcon image={animal} key={animal}/>
       { profilesScreen ? 
       <div>
         <SmallLogo />
+        <h2 className="profile-instructions">CHOOSE A PROFILE</h2> 
         <div className="icons-section">
           {allIcons}
         </div>
-        <h2 className="profile-instructions">Select A Profile</h2> 
       </div>: null }
     </section>
   )
