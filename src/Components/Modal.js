@@ -21,7 +21,7 @@ const OVERLAY_STYLE = {
   zIndex: 1000
 }
 
-export default function Modal({ checkWinCondition, open, activityObject, onClose, handleComplete, collectCompletedActivities }) {
+export default function Modal({ checkWinCondition, open, activityObject, onClose, handleComplete, collectCompletedActivities, gameId, completeGame, completedActivities }) {
   if (!open) return null
   console.log(activityObject)
   return (
@@ -36,6 +36,13 @@ export default function Modal({ checkWinCondition, open, activityObject, onClose
           handleComplete(activityObject.id)
           collectCompletedActivities(activityObject)
           if(checkWinCondition(activityObject.id)){
+            completeGame({
+            variables: {
+              id: parseInt(gameId),
+              win: true,
+              activities: completedActivities
+            }
+          })
             alert("yaaaaaaaaaaaaaaaaaaaaaaaaaaaaay")
           }
           }}>COMPLETE</button>

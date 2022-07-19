@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link }from "react-router-dom"
 import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleRight, faAnglesRight, faDumbbell } from "@fortawesome/free-solid-svg-icons"
@@ -49,18 +50,15 @@ useEffect(() => {
     }
   },[id])
 
-//   useEffect(() => {
-//     setActivities(prevActivities => {
-//         const newActivities = []
-//         prevActivities.forEach((activity) => {
-//             if (completedActivities.includes(activity.name)) {
-//                 newActivities.push(activity) //grey version
-//             } else {
-//                 newActivities.push(activity)
-//             }
-//         })
-//     })
-//   },[completedActivities])
+  // useEffect(() => {
+  //   props.winConditionMet && props.completeGame({
+  //   variables: {
+  //     id: parseInt(props.gameId),
+  //     win: true,
+  //     activities: completedActivities
+  //   }
+  // })
+  // },[completedActivities])
 
   const getActivityDetails = () => {
       if (!id) return
@@ -89,7 +87,7 @@ useEffect(() => {
 
   const collectCompletedActivities = (activity) => {
     setCompletedActivities(prevActivities => {
-        return [...prevActivities, activity]
+        return [...prevActivities, parseInt(activity.id)]
     })
   }
 
@@ -124,7 +122,7 @@ useEffect(() => {
         <div className="sidebar-visable">
             <div className="icon-section-sidebar">
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
-                <div className="swolify-sidebar-name">SWOLIFY</div>
+                <div className="swolify-sidebar-name"><Link to="/">SWOLIFY</Link></div>
             </div>
             <ul className="activity-list">{activities}</ul>
         </div> :
@@ -134,7 +132,8 @@ useEffect(() => {
             </div>
             <ul className="activity-list-hidden">{activities}</ul>
         </div>  }
-        {activityObject && <Modal collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={completeSidebar} checkWinCondition={props.checkWinCondition} onClose={() => {
+        {activityObject && <Modal collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={completeSidebar} checkWinCondition={props.checkWinCondition}
+        gameId={props.gameId} completeGame={props.completeGame} completedActivities={completedActivities} onClose={() => {
             setId(0)
             setActivityObject({})
             setVisabilitySideBar(true)

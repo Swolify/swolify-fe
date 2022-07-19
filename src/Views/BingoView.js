@@ -6,7 +6,7 @@ import { BingoSquare } from '../Components/BingoSquare';
 import { useQuery, useMutation, gql } from '@apollo/client';
 
 
-export const BingoView = ({ activities, gameId }) => {
+export const BingoView = ({ activities, gameId, addGameData }) => {
   const [squareCount, setSquareCount] = useState(0)
   const [squares, setSquares] = useState([])
   const [completedExcercises, setCompletedExercises] = useState([])
@@ -183,16 +183,8 @@ export const BingoView = ({ activities, gameId }) => {
 
   return (
     <div className="bingo-view">
+      <Sidebar handleComplete={handleComplete} gameActivities={activities} checkWinCondition={checkWinCondition} gameId={gameId} completeGame={completeGame} addGameData={addGameData}/>
       <div className="main">
-      <button onClick={() => completeGame({
-      variables: {
-        id: parseInt(gameId),
-        win: true,
-        activities: ['Drink Water']
-      }
-    })}>Complete Game</button>
-
-
 { squares && <div className={`BingoCard${squareCount}`}>
           {squares}
         </div>}
