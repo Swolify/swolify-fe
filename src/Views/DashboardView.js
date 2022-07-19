@@ -6,12 +6,12 @@ import { GameSelectionForm } from '../Components/GameSelectionForm'
 import { HistoryContainer } from '../Components/HistoryContainer'
 import '../Styles/DashboardView.css'
 
-export const DashboardView = ({ addGameData, setError }) => {
-
+export const DashboardView = ({ addGameData, user}) => {
+  
   return (
     <>
     <h1>Dashboard</h1>
-    <GameSelectionForm addGameData={addGameData} setError={setError}/>
+    <GameSelectionForm addGameData={addGameData} userid={user}/>
     <section className="game-data-section">
       <WinLossRatioChart/>
       <GameStats />
