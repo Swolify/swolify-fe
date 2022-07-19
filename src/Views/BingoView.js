@@ -3,20 +3,23 @@ import { Sidebar } from '../Components/Sidebar';
 import "../Styles/BingoView.css"
 import { Modal } from '../Components/Modal';
 import { BingoSquare } from '../Components/BingoSquare';
+import { useQuery, useMutation, gql } from '@apollo/client';
 
 
-export const BingoView = ({ activities }) => {
+export const BingoView = ({ activities, gameId, addGameData }) => {
   const [squareCount, setSquareCount] = useState(0)
   const [squares, setSquares] = useState([])
   const [completedExcercises, setCompletedExercises] = useState([])
   const [squareData, setSquareData] = useState({})
 
 
+
+
   const handleComplete = (id) => {
     setSquares(prevSquares => {
       const newSQ = [...prevSquares]
       const targetIndex = newSQ.findIndex(sq => {
-        
+
         return sq.props.id === id
       })
       const targetElement = newSQ.find(sq => {
@@ -28,6 +31,7 @@ export const BingoView = ({ activities }) => {
       return newSQ
     })
   }
+
 
   // const createSquares = () => {
   //   if (!level) return
@@ -134,7 +138,6 @@ export const BingoView = ({ activities }) => {
       completeCount = 0
     }
 
-
     return winConditionMet
 
   }
@@ -154,13 +157,34 @@ export const BingoView = ({ activities }) => {
     activities && setSquareCount(activities.length)
   }, [activities])
 
+  const COMPLETE_GAME = gql`
+  mutation modifyGame($id: Int!, $win: Boolean!, $activities: [String!]){
+    modifyGame(input: {params: {
+      id: $id
+      win: $win
+      activities: $activities
+      }
+     }
+    )
+    {
+           game {
+             id
+             win
+             level
+           }
+           success
+         }
+  }
+  `
+  const [completeGame, { data, loading, error }] = useMutation(COMPLETE_GAME)
+    if (loading) console.log('Submitting...');
+    if (error) console.log("error!", error.message)
+    if (data) console.log(data)
 
   return (
     <div className="bingo-view">
-      <Sidebar handleComplete={handleComplete} gameActivities={activities} checkWinCondition={checkWinCondition}/>
+      <Sidebar handleComplete={handleComplete} gameActivities={activities} checkWinCondition={checkWinCondition} gameId={gameId} completeGame={completeGame} addGameData={addGameData}/>
       <div className="main">
-
-
 { squares && <div className={`BingoCard${squareCount}`}>
           {squares}
         </div>}
@@ -168,15 +192,3 @@ export const BingoView = ({ activities }) => {
     </div>
   )
 }
-
-// <div className='buttonContainer'>
-//
-//   <button onClick={() => {
-//     setLevel("Easy")
-//   }}>Easy Mode</button>
-//   <button onClick={() => {
-//     setLevel("Hard")
-//   }}>Hard Mode</button>
-//   <button>History</button>
-//
-// </div>
