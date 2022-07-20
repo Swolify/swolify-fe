@@ -12,7 +12,7 @@ export const BingoView = ({ activities, gameId, addGameData }) => {
   const [completedExcercises, setCompletedExercises] = useState([])
   const [squareData, setSquareData] = useState({})
 
-
+  
 
 
   const handleComplete = (id) => {
