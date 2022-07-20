@@ -14,7 +14,7 @@ hr {
 }
 
 .history-container{
-  padding: 5em;
+  margin-top: 8em;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -23,25 +23,15 @@ hr {
 }
 
 .history-card {
+  padding: 1em;
   width: 100%;
-  display: flex;
-  align-items: center;
   justify-content: space-evenly;
-  background: linear-gradient(180deg, hsla(288, 69%, 41%, 0.4) 0%, hsla(0, 0%, 0%, .2) 100%);
+  display: flex;
+  background: linear-gradient(180deg, hsla(151, 42%, 26%, .4) 0%, hsla(0, 0%, 0%, .2) 100%);
   margin: .3em;
-  animation: pulsate 1.5s infinite alternate;  
-  border: 0.2rem solid #fff;
-}
-
-.history-card {
-  box-shadow: 0 0 .2rem #fff,
-            0 0 .2rem #fff,
-            0 0 2rem #1685f8,
-            0 0 0.8rem #1685f8,
-            0 0 2.8rem #1685f8,
-            inset 0 0 1.3rem #1685f8;
+  box-shadow: 0px -2px 0px 0px rgba(0,230,155,0.65);
 }
 
 .cards-wrapper {
-  width: 80%;
+  width: 75%;
 }

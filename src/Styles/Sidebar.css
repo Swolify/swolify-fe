@@ -1,22 +1,25 @@
 .sidebar-visable {
     position: absolute;
     height: 100vh;
-    width: 20vw;
+    width: 25vw;
     background-color: #FFF;
     margin: 2em;
+    margin-top: 2em;
     transition: all .3s ease-in-out;
 }
 
 .icon-section-sidebar {
+    font-size: 1.8em;
+    width: 90%;
     display: flex;
-    justify-content: space-around;
-    font-size: 1.7em;
+    justify-content: space-evenly;
     margin: 1em;
     margin-top: 1.5em;
 }
 
-.swolify-sidebar-name {
-    margin-left: .5em;
+.link {
+    text-decoration: none;
+    color: #000;
 }
 
 .activity-list {
@@ -35,50 +38,44 @@
 
 .swolify-sidebar-name {
     font-family: 'Press Start 2P', cursive;
-    width: 95%;
 }
 
 .excercise-selection {
     display: flex;
+    align-items: left;
     justify-content: space-evenly;
-    margin: 1em;
+    padding: 1em;
     width: 100%;
 }
 
 .excercise-list {
     display: flex;
-    border:none;
-    background-color:transparent;
-    outline:none;
+    border: none;
+    background-color: transparent;
+    outline: none;
     cursor: pointer;
-    width: 25%;
-    border: 1px solid red;
+    width: 100%;
     margin: 0;
     padding: 0;
- }
+}
 
- .excercise-list {
-     width: 90%;
-     padding: 0;
- }
+.fa-angle-right,
+.fa-angles-right {
+    font-size: 1.5em;
+    border: 1px solid blue;
+    width: 100%;
+    height: 100%;
+}
 
- .fa-angle-right,
- .fa-angles-right{
-     font-size: 1.5em;
-     border: 1px solid blue;
-     width: 100%;
-     height: 100%;
- }
+.fa-angles-right {
+    display: none;
+}
 
- .fa-angles-right {
-     display: none;
- }
-
- .fa-angle-right:hover + .fa-angles-right {
+.fa-angle-right:hover+.fa-angles-right {
     transition: all 1s ease;
     display: block;
     margin-left: -2px;
-  }
+}
 
 .fa-angles-right:hover {
     display: block;
@@ -86,7 +83,7 @@
 
 /* SIDEBAR NEON SECTION */
 
-/* .sidebar-visable,
+.sidebar-visable,
 .sidebar-hidden {
     animation: pulsate 1.5s infinite alternate;
     border: 0.2rem solid #fff;
@@ -111,7 +108,6 @@
             0 0 80px #b914e9,
             0 0 90px #b914e9,
             0 0 100px #b914e9,
-            0 0 100px #b914e9;
 
     }
 
@@ -125,17 +121,17 @@
             0 0 45px #b914e9,
             0 0 55px #b914e9,
             0 0 70px #b914e9,
-            0 0 80px #b914e9;
 
     }
 }
 
 @media screen and (prefers-reduced-motion) {
+
     .sidebar-visable,
     .sidebar-hidden {
         animation: none;
     }
-} */
+}
 
 
 
@@ -151,5 +147,5 @@
 }
 
 .activity-list-hidden {
-  display: none;
+    display: none;
 }

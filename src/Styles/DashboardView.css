@@ -4,7 +4,7 @@
   width: 80%;
   height: 70vh;
   margin-left: 2em;
-  padding-top: 2em;
+  padding-top: 1em;
 }
 
 .game-data-section {
@@ -24,7 +24,7 @@
 }
 
 .dashboard-title {
-  padding: 2em;
+  padding: 1em;
   color: #FFF;
   font-family: 'Press Start 2P', cursive;
 }

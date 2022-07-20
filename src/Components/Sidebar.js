@@ -122,14 +122,11 @@ useEffect(() => {
         <div className="sidebar-visable">
             <div key="stuff2" className="icon-section-sidebar">
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
-                <div className="swolify-sidebar-name"><Link to="/">SWOLIFY</Link></div>
+                <div className="swolify-sidebar-name"><Link className="link" to="/">SWOLIFY</Link></div>
             </div>
             <ul key="stuff" className="activity-list">{activities}</ul>
         </div> :
         <div className="sidebar-hidden">
-            <div className="icon-section-sidebar">
-                <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
-            </div>
             <ul key="stuff1" className="activity-list-hidden">{activities}</ul>
         </div>  }
         {activityObject && <Modal collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={completeSidebar} checkWinCondition={props.checkWinCondition}
