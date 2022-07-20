@@ -1,15 +1,19 @@
 {
   "files": {
-    "main.css": "/swolify-fe/static/css/main.89b32edf.css",
-    "main.js": "/swolify-fe/static/js/main.761ed90f.js",
+    "main.css": "/swolify-fe/static/css/main.27078c7f.css",
+    "main.js": "/swolify-fe/static/js/main.f1b9cefb.js",
     "static/js/787.0d80d98b.chunk.js": "/swolify-fe/static/js/787.0d80d98b.chunk.js",
+    "static/media/bunny-icon.png": "/swolify-fe/static/media/bunny-icon.9eab3a83be8e5c6ea254.png",
+    "static/media/other-cow-icon.png": "/swolify-fe/static/media/other-cow-icon.b43d7c447772c29d8fbe.png",
+    "static/media/dog-icon.png": "/swolify-fe/static/media/dog-icon.a879eaae3ae9d03f5725.png",
+    "static/media/cow-icon.png": "/swolify-fe/static/media/cow-icon.ca51de0c9bd33ef008ae.png",
     "index.html": "/swolify-fe/index.html",
-    "main.89b32edf.css.map": "/swolify-fe/static/css/main.89b32edf.css.map",
-    "main.761ed90f.js.map": "/swolify-fe/static/js/main.761ed90f.js.map",
+    "main.27078c7f.css.map": "/swolify-fe/static/css/main.27078c7f.css.map",
+    "main.f1b9cefb.js.map": "/swolify-fe/static/js/main.f1b9cefb.js.map",
     "787.0d80d98b.chunk.js.map": "/swolify-fe/static/js/787.0d80d98b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.89b32edf.css",
-    "static/js/main.761ed90f.js"
+    "static/css/main.27078c7f.css",
+    "static/js/main.f1b9cefb.js"
   ]
 }
