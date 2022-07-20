@@ -22,7 +22,8 @@ export const Sidebar = (props) => {
         for (let i = 0; i < activitiesArray.length; i++) {
           setActivities(prevExcercises => [...prevExcercises,
                     <div key={activitiesArray[i].id} className="excercise-selection">
-                        <button className="excercise-list"  id={activitiesArray[i].id} onClick={selectExcercise}>{activitiesArray[i].activity.name} ></button>
+                        <button className="excercise-list"  id={activitiesArray[i].id} onClick={selectExcercise}>{activitiesArray[i].activity.name}</button>
+                        <div>></div>
                     </div>])
             }
       }, [activitiesArray])

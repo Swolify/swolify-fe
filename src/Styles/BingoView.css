@@ -1,11 +1,13 @@
 .BingoCard16 {
-    width: 90vw;
-    height: 90vh;
-    display: grid;
+    height: 100vh;
+    padding-top: 8vh;
+    display: inline-grid;
     place-items: center;
-    grid-template-rows: 150px 150px 150px;
-    grid-template-columns: 150px 150px 150px;
-    margin-left: 50px;
+    grid-template-rows: 150px 150px 150px 150px;
+    grid-template-columns: 150px 150px 150px 150px;
+    grid-gap: 1em;
+    align-items: center;
+    justify-items: center;
 }
 
 .BingoCard9 {
