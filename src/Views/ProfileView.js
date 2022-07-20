@@ -10,7 +10,6 @@ import bunny from '../Images/bunny-icon.png'
 import cow from '../Images/cow-icon.png'
 import dog from '../Images/dog-icon.png'
 import othercow from '../Images/other-cow-icon.png'
-import { LoadingScreen } from '../Components/LoadingScreen'
 
 const ALL_USERS = gql`
     query {
@@ -23,9 +22,10 @@ const ALL_USERS = gql`
   `
 
 
-export const ProfileView = ({setUserId, userId}) => {
+export const ProfileView = ({setUserId, userId, startTimer}) => {
   const [profilesScreen, setProfilesScreen] = useState(false)
-  
+  const [loadingScreen, setLoadingScreen] = useState(false)
+
   const animals = [bunny, cow, dog, othercow, bunny, cow, dog, othercow, bunny, cow, dog, othercow]
   let allIcons
   let { data, loading, error } = useQuery(ALL_USERS)

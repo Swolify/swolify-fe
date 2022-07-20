@@ -5,7 +5,6 @@
   overflow-y: scroll;
   height: 350px;
   width: 75%;
-  background-color: lightgrey;
   border-radius: 8px;
   box-shadow: inset 0px 0px 11px 0px #080808;
   margin-top: 50px;
@@ -20,8 +19,22 @@ hr {
   border: 1px solid black;
 }
 
+.scores-history,
 .history-card {
-  background-color: #ffff;
-  width: 90%;
-  margin-top: 10px;
+  color: #FFF;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.history-container{
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.history-card {
+  width: 100%;
+  background: linear-gradient(180deg, hsla(151, 42%, 26%, .4) 0%, hsla(0, 0%, 0%, .2) 100%);
+  margin: .3em;
+  box-shadow: 0px -2px 0px 0px rgba(0,230,155,0.65);
 }

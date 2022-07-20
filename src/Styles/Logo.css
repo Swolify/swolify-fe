@@ -4,19 +4,18 @@
 } 
 
 .small-logo-icon {
-    /* transition: width 5s ease; */
     animation: css-animation 2s ease-in 0s forwards; 
 }
 
 @keyframes css-animation {
     from {
         transform:scale(1);
-        transition: all 3s linear;
+        transition: all 5s linear;
     }
     to {
         margin-top: -8em;
         margin-bottom: -3em;
         transform:scale(.5);
-        transition: all 3s linear;
+        transition: all 5s linear;
     }
 }

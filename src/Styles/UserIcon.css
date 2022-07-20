@@ -9,6 +9,7 @@
 
 .user-icon-background:hover {
   cursor: pointer;
+  /* box-shadow: 1px 4px 11px 4px black; */
 }
 
 .user-icon-background {
@@ -23,7 +24,7 @@
 }
 
 .icons-section {
-  animation-duration: 3s;
+  animation-duration: 1.5s;
   animation-name: profileslide;
 }
 

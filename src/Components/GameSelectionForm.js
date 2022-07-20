@@ -111,7 +111,7 @@ function toggle(value){
           <div className="exercise-type">
             <div className="exercise-type-select">
               <label htmlFor="upperbody">Upper Body</label>
-              <input type="checkbox" id="upperbody" name="upperbody" value="Upper Body" onChange={() => setUpperBody(toggle)}/>
+              <input className="checkbox-pop" type="checkbox" id="upperbody" name="upperbody" value="Upper Body" onChange={() => setUpperBody(toggle)}/>
             </div>
             <div className="exercise-type-select">
               <label htmlFor="lowerbody">Lower Body</label>

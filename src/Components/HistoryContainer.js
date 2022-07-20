@@ -30,7 +30,10 @@ export const HistoryContainer = ({user}) => {
 
   return (
     <section className="history-container">
+      <h2 className="scores-history">SCORES</h2>
+      <div>
       {generateHistoryCards()}
+      </div>
     </section>
   )
 }
