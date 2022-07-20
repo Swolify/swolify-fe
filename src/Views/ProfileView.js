@@ -31,6 +31,7 @@ export const ProfileView = ({setUserId, userId, startTimer}) => {
   let { data, loading, error } = useQuery(ALL_USERS)
     if (loading) console.log('Loading...');
     if (error) console.log("error!", error.message)
+    console.log(data)
     if (data) allIcons = data.fetchAllUsers.map((user, index) => <UserIcon setUserId={setUserId} image={animals[index]} id={user.id} key={user.id}/>)
 
     return (
@@ -39,12 +40,12 @@ export const ProfileView = ({setUserId, userId, startTimer}) => {
           <Logo />
           <StartButton showProfiles={() => {
             setProfilesScreen(true)
-          }} /> 
+          }} />
         </div> : null }
-        { profilesScreen ? 
+        { profilesScreen ?
         <div>
           <SmallLogo />
-          <h2 className="profile-instructions">CHOOSE A PROFILE</h2> 
+          <h2 className="profile-instructions">CHOOSE A PROFILE</h2>
           <div className="icons-section">
             {allIcons}
           </div>
