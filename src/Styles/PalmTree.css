@@ -1,0 +1,48 @@
+.figure {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+.stripes-wraper {
+    width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 20px #F29);
+  overflow: hidden;
+  position: absolute;
+}
+  
+.stripe {
+    width: 100%;
+    height: 15px;
+    background-color: #FFF;
+    animation: scroll 1s linear infinite;
+}
+  
+  @keyframes scroll {
+    from {
+        transform: translateY(-30px)
+    }
+}
+
+.gradient-mask {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #92F 0%, #F29 100%);
+    mix-blend-mode: multiply;
+    position: absolute;
+}
+  
+.palm-tree {
+    width: 450px;
+    height: 601px;
+    background-image: url(https://res.cloudinary.com/tecice/image/upload/v1581216237/palm-tree.png);
+    transform: scale(.8) translateY(75px);
+    position: absolute;
+}
+

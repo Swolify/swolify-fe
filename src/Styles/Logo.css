@@ -5,7 +5,7 @@
 
 .small-logo-icon {
     /* transition: width 5s ease; */
-    animation: css-animation 3s ease-in 0s forwards; 
+    animation: css-animation 2s ease-in 0s forwards; 
 }
 
 @keyframes css-animation {
