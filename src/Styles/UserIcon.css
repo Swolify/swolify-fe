@@ -1,21 +1,41 @@
 .user-icon {
-  border-radius: 100%;
-  width: 15rem;
-  height: 15rem;
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    width: 15rem;
+    height: 15rem;
 }
 
 .user-icon-background:hover {
   cursor: pointer;
-  box-shadow: 1px 4px 11px 4px black;
+}
+ 
+.icons-section {
+  animation-duration: 1.5s;
+  animation-name: profileslide;
 }
 
-.user-icon-background {
-  width: 17rem;
-  height: 17rem;
-  border-radius: 100%;
-  background-color: #ffe200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 9px 7px 11px 4px black;
+@keyframes profileslide {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
 }
+
+      
+.user-icon:hover {
+    background-color: #3e8e41
+}
+      
+.user-icon:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+

@@ -38,13 +38,14 @@ export const DashboardView = ({ addGameData, user, setUser, userId, setRenderGam
 
   return (
     <>
-    <h1>Dashboard</h1>
-    <GameSelectionForm addGameData={addGameData} userId={userId}/>
-    <section className="game-data-section">
-      <WinLossRatioChart user={user}/>
-      <GameStats user={user}/>
-    </section>
-    <h2>History</h2>
+      <h1 className="dashboard-title">Dashboard</h1>
+      <div className="dashboard-wrapper">
+        <GameSelectionForm addGameData={addGameData} userId={userId}/>
+        <section className="game-data-section">
+          <WinLossRatioChart user={user}/>
+          <GameStats user={user}/>
+        </section>
+    </div>  
     <HistoryContainer user={user}/>
     </>
   )

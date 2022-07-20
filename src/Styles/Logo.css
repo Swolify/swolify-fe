@@ -1,0 +1,21 @@
+.logo-icon {
+    transition: all .3s ease-in-out;
+    width: 100%;
+} 
+
+.small-logo-icon {
+    animation: css-animation 1s ease-in 0s forwards; 
+}
+
+@keyframes css-animation {
+    from {
+        transform:scale(1);
+        transition: all 5s linear;
+    }
+    to {
+        margin-top: -8em;
+        margin-bottom: -3em;
+        transform:scale(.5);
+        transition: all 5s linear;
+    }
+}

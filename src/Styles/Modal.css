@@ -1,0 +1,55 @@
+.modal-style {
+    font-family: 'Press Start 2P', cursive;
+    padding: 2em;
+    box-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #35fcf2,
+      0 0 82px #35fcf2;
+}
+
+.modal-title,
+.modal-body {
+    margin: 1em;
+    color: #FFF;
+}
+
+.complete-button {
+    background-color: #000;
+    margin-top: 1em;
+    font-family: 'Press Start 2P', cursive;
+    justify-content: center;
+    cursor: pointer;
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    border-color: #e61bd8;
+    animation: pulsate 1.5s infinite alternate;
+    border: 0.2rem solid #fff;
+    box-shadow: 0 0 .2rem #fff,
+        0 0 .2rem #fff,
+        0 0 2rem #e61bd8,
+        0 0 0.8rem #e61bd8,
+        0 0 2.8rem #e61bd8,
+        inset 0 0 1.3rem #e61bd8;
+}
+
+.winner-div {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+    color: #FFF;  
+}
+
+.winner {
+    font-size: 4em;
+    padding: 2em;
+}

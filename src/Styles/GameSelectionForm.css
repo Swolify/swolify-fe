@@ -1,9 +1,99 @@
+.form-question,
+.difficulty-title {
+  padding-top: 3em;
+  font-size: 1.2em;
+}
+
 .exercise-selection {
-  background-color: lightgrey;
-  border-radius: 8px;
-  box-shadow: inset 0px 0px 11px 0px #080808;
-  padding: 10px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  width: 50%
+  margin-right: 2em;
+  color: #FFF;
+  font-family: 'Press Start 2P', cursive;
+  width: 60%;
+  text-align: center;
+}
+
+.exercise-selection {
+  color: #fff;
+  box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #b914e9,
+    0 0 82px #b914e9,
+    0 0 92px #b914e9,
+    0 0 102px #b914e9,
+    0 0 151px #b914e9;
+}
+
+.exercise-selection {
+  animation: pulsate 1.5s infinite alternate;
+  border: 0.2rem solid #fff;
+  border-radius: 2rem;
+  box-shadow: 0 0 .2rem #fff,
+    0 0 .2rem #fff,
+    0 0 2rem #b914e9,
+    0 0 0.8rem #b914e9,
+    0 0 2.8rem #b914e9,
+    inset 0 0 1.3rem #b914e9;
+
+}
+
+.exercise-type-select input[type="checkbox"]:checked,
+.exercise-difficulty input[type="radio"]:checked {
+  display:inline-block;
+  background-color: transparent;
+  accent-color: #e61bd8;
+  box-shadow:
+  0 0 7px #fff,
+  0 0 10px #fff,
+  0 0 21px #fff,
+  0 0 92px #e61bd8,
+  0 0 102px #e61bd8,
+  0 0 151px #e61bd8;
+}
+
+.start-game-button {
+  box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #e61bd8,
+    0 0 82px #e61bd8,
+    0 0 92px #e61bd8,
+    0 0 102px #e61bd8,
+    0 0 151px #e61bd8;
+}
+
+.start-game-btn {
+  background-color: #000;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  font-family: 'Press Start 2P', cursive;
+  justify-content: center;
+  cursor: pointer;
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  border-color: #e61bd8;
+  animation: pulsate 1.5s infinite alternate;
+  border: 0.2rem solid #fff;
+  box-shadow: 0 0 .2rem #fff,
+    0 0 .2rem #fff,
+    0 0 2rem #e61bd8,
+    0 0 0.8rem #e61bd8,
+    0 0 2.8rem #e61bd8,
+    inset 0 0 1.3rem #e61bd8;
+}
+
+.start-game-btn:hover {
+  background-color: #e61bd8
+}
+
+.start-game-btn:active {
+  border-color: #e61bd8;
+  box-shadow: 0 5px #5b0a56;
+  transform: translateY(4px);
 }

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleRight, faAnglesRight, faDumbbell } from "@fortawesome/free-solid-svg-icons"
 import "../Styles/Sidebar.css"
-import Modal  from '../Components/Modal';
+import { Modal } from '../Components/Modal';
 
 export const Sidebar = (props) => {
     const [activities, setActivities] = useState([])
@@ -22,7 +22,8 @@ export const Sidebar = (props) => {
         for (let i = 0; i < activitiesArray.length; i++) {
           setActivities(prevExcercises => [...prevExcercises,
                     <div key={activitiesArray[i].id} className="excercise-selection">
-                        <button className="excercise-list"  id={activitiesArray[i].id} onClick={selectExcercise}>{activitiesArray[i].activity.name} ></button>
+                        <button className="excercise-list"  id={activitiesArray[i].id} onClick={selectExcercise}>{activitiesArray[i].activity.name}</button>
+                        <div>></div>
                     </div>])
             }
       }, [activitiesArray])
@@ -122,17 +123,14 @@ useEffect(() => {
         <div className="sidebar-visable">
             <div key="stuff2" className="icon-section-sidebar">
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
-                <div className="swolify-sidebar-name"><Link to="/">SWOLIFY</Link></div>
+                <div className="swolify-sidebar-name"><Link className="link" to="/">SWOLIFY</Link></div>
             </div>
             <ul key="stuff" className="activity-list">{activities}</ul>
         </div> :
         <div className="sidebar-hidden">
-            <div className="icon-section-sidebar">
-                <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
-            </div>
             <ul key="stuff1" className="activity-list-hidden">{activities}</ul>
         </div>  }
-        {activityObject && <Modal collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={completeSidebar} checkWinCondition={props.checkWinCondition}
+        {activityObject && <Modal setWin={props.setWin} collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={completeSidebar} checkWinCondition={props.checkWinCondition}
         gameId={props.gameId} completeGame={props.completeGame} completedActivities={completedActivities} onClose={() => {
             setId(0)
             setActivityObject({})
