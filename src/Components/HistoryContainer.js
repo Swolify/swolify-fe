@@ -18,9 +18,7 @@ export const HistoryContainer = ({user}) => {
             <div key={game.id} className="history-card">
               <p>Game Number: {game.id}</p>
               {displayWin(game.win)}
-              <ul className="activity-history">
-                {activities}
-              </ul>
+
             </div>
           )
         })
@@ -31,7 +29,7 @@ export const HistoryContainer = ({user}) => {
   return (
     <section className="history-container">
       <h2 className="scores-history">SCORES</h2>
-      <div>
+      <div className="cards-wrapper">
       {generateHistoryCards()}
       </div>
     </section>

@@ -4,7 +4,7 @@
 } 
 
 .small-logo-icon {
-    animation: css-animation 2s ease-in 0s forwards; 
+    animation: css-animation 1s ease-in 0s forwards; 
 }
 
 @keyframes css-animation {

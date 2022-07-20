@@ -1,15 +1,3 @@
-.history-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: scroll;
-  height: 350px;
-  width: 75%;
-  border-radius: 8px;
-  box-shadow: inset 0px 0px 11px 0px #080808;
-  margin-top: 50px;
-  margin-bottom: 20px;
-}
 
 .activity-history {
   list-style-type: none;
@@ -26,7 +14,9 @@ hr {
 }
 
 .history-container{
+  padding: 5em;
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
@@ -34,7 +24,24 @@ hr {
 
 .history-card {
   width: 100%;
-  background: linear-gradient(180deg, hsla(151, 42%, 26%, .4) 0%, hsla(0, 0%, 0%, .2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: linear-gradient(180deg, hsla(288, 69%, 41%, 0.4) 0%, hsla(0, 0%, 0%, .2) 100%);
   margin: .3em;
-  box-shadow: 0px -2px 0px 0px rgba(0,230,155,0.65);
+  animation: pulsate 1.5s infinite alternate;  
+  border: 0.2rem solid #fff;
+}
+
+.history-card {
+  box-shadow: 0 0 .2rem #fff,
+            0 0 .2rem #fff,
+            0 0 2rem #1685f8,
+            0 0 0.8rem #1685f8,
+            0 0 2.8rem #1685f8,
+            inset 0 0 1.3rem #1685f8;
+}
+
+.cards-wrapper {
+  width: 80%;
 }

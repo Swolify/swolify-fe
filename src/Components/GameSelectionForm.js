@@ -106,8 +106,7 @@ function toggle(value){
   return (
     <>
       <form className="exercise-selection">
-        <h2>Play Game!</h2>
-        <p>What would you like to train?</p>
+        <p className="form-question">What would you like to train?</p>
           <div className="exercise-type">
             <div className="exercise-type-select">
               <label htmlFor="upperbody">Upper Body</label>
@@ -126,21 +125,23 @@ function toggle(value){
               <input type="checkbox" id="cardio" name="cardio" value="Cardio" onChange={() => setCardio(toggle)}/>
             </div>
           </div>
-        <p>Select Difficulty Level</p>
-          <div className="exercise-difficulty">
-            <label htmlFor="easymode">Easy</label>
-            <input type="radio" id="easymode" name="easymode" value="Easy" checked={easyChecked} onChange={() => levelToggle("easy")}/>
-            <label htmlFor="hardmode">Hard</label>
-            <input type="radio" id="hardmode" name="hardmode" value="Hard" checked={hardChecked} onChange={() => levelToggle("hard")}/>
-          </div>
-          <br></br>
           <div>
-          <Link to="/game" onClick={(event) => createGame(event)}>
-           <button className="start-game-btn" >
-           Start Game
-           </button>
-          </Link>
-          </div>
+            <p className="difficulty-title">Select Difficulty Level</p>
+              <div className="exercise-difficulty">
+                <label htmlFor="easymode">Easy</label>
+                <input type="radio" id="easymode" name="easymode" value="Easy" checked={easyChecked} onChange={() => levelToggle("easy")}/>
+                <label htmlFor="hardmode">Hard</label>
+                <input type="radio" id="hardmode" name="hardmode" value="Hard" checked={hardChecked} onChange={() => levelToggle("hard")}/>
+              </div>
+              <br></br>
+              <div>
+              <Link to="/game" onClick={(event) => createGame(event)}>
+              <button className="start-game-btn" >
+              Play Game
+              </button>
+              </Link>
+          </div>  
+        </div>
         {noCategoriesMessage()}
       </form>
     </>

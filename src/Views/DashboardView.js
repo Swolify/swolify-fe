@@ -46,7 +46,6 @@ export const DashboardView = ({ addGameData, user, setUser, userId, setRenderGam
           <GameStats user={user}/>
         </section>
     </div>  
-    <h2>History</h2>
     <HistoryContainer user={user}/>
     </>
   )

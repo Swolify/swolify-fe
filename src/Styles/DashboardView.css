@@ -1,12 +1,26 @@
 .dashboard-wrapper  {
   display: flex;
+  justify-content: space-between;
+  width: 80%;
+  height: 70vh;
+  margin-left: 2em;
+  padding-top: 2em;
 }
 
-.game-data-section{
-  width: 100%;
+.game-data-section {
+  margin-left: 2em;
+  width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.VictoryContainer,
+.game-summary-section,
+.pieChart {
+  color: #FFF;
+  background-color: #000;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .dashboard-title {
