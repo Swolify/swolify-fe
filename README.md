@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# Swolify
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Group Project
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+Hate working out but love yelling bingo? Try Swolify! At Swolify, users play an Exercise Bingo game, selecting which forms of exercise they want to perform, and then Swolify randomly generates a number of exercises based on the difficulty setting selected by the user. The user then completes exercises one at a time, which complete randomized tiles on the Bingo board. The user then completes exercises until obtaining a Bingo.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### [Swolify deployable Link](https://swolify-client.herokuapp.com/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Project Views
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Landing page:
 
-### `npm run build`
+![swolify-landing-page](https://media.giphy.com/media/iT3WKqBJIob2NUEvyT/giphy.gif)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Profile Selection Page:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![profile-page](https://media.giphy.com/media/F1934rL6H5meItmG4P/giphy.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### User Dashboard View:
 
-### `npm run eject`
+![dashboard view](https://media.giphy.com/media/Tbqm4n4HogRE3tARNr/giphy.gif)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Gameboard View:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![gameboard view](https://media.giphy.com/media/N9twgo08X61Epll4cL/giphy.gif)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Winner View:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Winner view](https://media.giphy.com/media/zIXEosRfbumEgJi7ck/giphy.gif)
 
-## Learn More
+### React
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- This multi page App was built with React and incorporates React Prototypes as well as React Router.
 
-### Code Splitting
+### GraphQL
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Used to manage the data from the back-end
 
-### Analyzing the Bundle Size
+### Cypress Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+- All Testing of User views and user interactions
+- Error Handling of Server errors and invalid URLS Tested
+- Fetch requests are stubbed
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## Instructions for Use
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+- Upon opening the browser, a user is greeted with the Home page where they can press the "START" button!
+- Once the user presses the start button they are taken to the Profile page and the user has a choice to choose from 4 profiles.
+- When a User selects a profile they are taken to the dashboard were they can choose a workout and difficulty.
+- The user is then taken to the game and should see a navigation with workouts and a bingo game board.
+- When a user selects a workout a Modal will pop up with a video that will give an example of the workout and a complete button.
+- Once the user completes a workout a random square will show the name of the workout. A user must complete as many workouts needed to get a tic-tac toe and win.
+- Once a user wins a screen that reads "WINNER" will appear and the user has to click the Home button to be navigated back home.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Technologies Used
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React
+- React Router
+- Cypress Testing
+- GraphQL
+- Apollo Client
+- ES6 JavaScript
+- CSS
+- JSX
+
+
+## Future Features
+
+- Loading Screen
+- Turn Limit/Round Limit
+
+## Project Management
+
+- [Nik Seif](https://github.com/niksseif)
+
+
+- We used a [Github Project Board](https://github.com/orgs/Swolify/projects/3) stay on task and meet the deadlines.
+- We also used [Github Issues] to break user stories down into easier to solve increments.
+
+### MVP Proposal
+
+- [MVP Proposal](https://docs.google.com/document/d/1UgQW5J5aqwrye_B-zLWctDWc9VPOZbbXJ-iGJ99Kv8Q/edit?usp=sharing)
+
+
+## Contributors
+
+- [Oakley Windiate](https://github.com/oakleywindiate)
+- [Tyler Tedesco](https://github.com/sted1994)
+- [Kevin King](https://github.com/King13k)
+- [Matt Ruder](https://github.com/mattruder)
