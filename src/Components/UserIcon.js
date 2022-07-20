@@ -9,7 +9,7 @@ export const UserIcon = ({ image, id, setUserId}) => {
     <div className='user-icon-background'>
         <Link to='/game' > <img onClick={() =>  {
           setUserId(id)
-          }} className='user-icon' src={image} /> </Link>
+        }} className='user-icon' src={image} /> </Link>
     </div>
   )
 }
