@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleRight, faAnglesRight, faDumbbell } from "@fortawesome/free-solid-svg-icons"
 import "../Styles/Sidebar.css"
-import Modal  from '../Components/Modal';
+import { Modal } from '../Components/Modal';
 
 export const Sidebar = (props) => {
     const [activities, setActivities] = useState([])
@@ -129,7 +129,7 @@ useEffect(() => {
         <div className="sidebar-hidden">
             <ul key="stuff1" className="activity-list-hidden">{activities}</ul>
         </div>  }
-        {activityObject && <Modal collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={completeSidebar} checkWinCondition={props.checkWinCondition}
+        {activityObject && <Modal setWin={props.setWin} collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={completeSidebar} checkWinCondition={props.checkWinCondition}
         gameId={props.gameId} completeGame={props.completeGame} completedActivities={completedActivities} onClose={() => {
             setId(0)
             setActivityObject({})

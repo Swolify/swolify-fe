@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Sidebar } from '../Components/Sidebar';
 import "../Styles/BingoView.css"
 import { Modal } from '../Components/Modal';
+import { Link } from 'react-router-dom';
 import { BingoSquare } from '../Components/BingoSquare';
 import { useQuery, useMutation, gql } from '@apollo/client';
+import "../Styles/Modal.css"
 
 
 export const BingoView = ({ activities, gameId, addGameData }) => {
@@ -11,6 +13,7 @@ export const BingoView = ({ activities, gameId, addGameData }) => {
   const [squares, setSquares] = useState([])
   const [completedExcercises, setCompletedExercises] = useState([])
   const [squareData, setSquareData] = useState({})
+  const [win, setWin] = useState(false)
 
   
 
@@ -158,7 +161,7 @@ export const BingoView = ({ activities, gameId, addGameData }) => {
   }, [activities])
 
   const COMPLETE_GAME = gql`
-  mutation modifyGame($id: Int!, $win: Boolean!, $activities: [String!]){
+  mutation modifyGame($id: Int!, $win: Boolean!, $activities: [Int!]){
     modifyGame(input: {params: {
       id: $id
       win: $win
@@ -181,9 +184,10 @@ export const BingoView = ({ activities, gameId, addGameData }) => {
     if (error) console.log("error!", error.message)
     if (data) console.log(data)
 
-  return (
+  if (!win) {
+    return (
     <div className="bingo-view">
-      <Sidebar handleComplete={handleComplete} gameActivities={activities} checkWinCondition={checkWinCondition} gameId={gameId} completeGame={completeGame} addGameData={addGameData}/>
+      <Sidebar setWin={setWin} handleComplete={handleComplete} gameActivities={activities} checkWinCondition={checkWinCondition} gameId={gameId} completeGame={completeGame} addGameData={addGameData}/>
       <div className="main">
 { squares && <div className={`BingoCard${squareCount}`}>
           {squares}
@@ -191,4 +195,12 @@ export const BingoView = ({ activities, gameId, addGameData }) => {
       </div>
     </div>
   )
+} else {
+  return (
+    <div className="winner-div">
+    <div className="winner">WINNER!</div>
+    <Link className="link" to="/"><button className="complete-button">HOME</button></Link>
+    </div>
+  )
 }
+} 

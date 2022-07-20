@@ -50,7 +50,7 @@
   height: 100%;
   width: 100%;
   height: 100vh;
-  background-image: url(/Users/oakleywindiate/Turing_Mod_4/swolify-fe/src/sunset.webp);
+  background-image: url("../sunset.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

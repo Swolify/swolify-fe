@@ -12,11 +12,11 @@ export const HistoryContainer = ({user}) => {
   const generateHistoryCards = () => {
     if(user){
       return (
-        user.games.map(game =>{
+        user.games.map((game, index) =>{
           const activities = game.completedActivities.map(activity => <p key={activity.name}>{activity.name}</p>)
           return (
             <div key={game.id} className="history-card">
-              <p>Game Number: {game.id}</p>
+              <p>Game Number: {index + 1}</p>
               {displayWin(game.win)}
 
             </div>
