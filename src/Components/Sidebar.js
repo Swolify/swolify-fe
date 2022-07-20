@@ -21,8 +21,8 @@ export const Sidebar = (props) => {
         setActivities([])
         for (let i = 0; i < activitiesArray.length; i++) {
           setActivities(prevExcercises => [...prevExcercises,
-                    <div className="excercise-selection">
-                        <button className="excercise-list" id={activitiesArray[i].id} onClick={selectExcercise}>{activitiesArray[i].activity.name} ></button>
+                    <div key={activitiesArray[i].id} className="excercise-selection">
+                        <button className="excercise-list"  id={activitiesArray[i].id} onClick={selectExcercise}>{activitiesArray[i].activity.name} ></button>
                     </div>])
             }
       }, [activitiesArray])
@@ -120,17 +120,17 @@ useEffect(() => {
       <>
         {visabilitySideBar ?
         <div className="sidebar-visable">
-            <div className="icon-section-sidebar">
+            <div key="stuff2" className="icon-section-sidebar">
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
                 <div className="swolify-sidebar-name"><Link to="/">SWOLIFY</Link></div>
             </div>
-            <ul className="activity-list">{activities}</ul>
+            <ul key="stuff" className="activity-list">{activities}</ul>
         </div> :
         <div className="sidebar-hidden">
             <div className="icon-section-sidebar">
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
             </div>
-            <ul className="activity-list-hidden">{activities}</ul>
+            <ul key="stuff1" className="activity-list-hidden">{activities}</ul>
         </div>  }
         {activityObject && <Modal collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={completeSidebar} checkWinCondition={props.checkWinCondition}
         gameId={props.gameId} completeGame={props.completeGame} completedActivities={completedActivities} onClose={() => {

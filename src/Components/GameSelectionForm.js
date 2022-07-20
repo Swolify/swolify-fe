@@ -1,10 +1,10 @@
 import React from 'react'
 import '../Styles/GameSelectionForm.css'
 import { useState, useEffect } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import { useQuery, useMutation, gql } from '@apollo/client';
 
-export const GameSelectionForm = ({ addGameData, setError }) => {
+export const GameSelectionForm = ({ addGameData, setError, userId }) => {
 
 const [upperBody, setUpperBody] = useState({ checked: false, category: "upper body"})
 const [lowerBody, setLowerBody] = useState({ checked: false, category: "lower body"})
@@ -39,7 +39,7 @@ function toggle(value){
   }
 
   const NEW_GAME = gql`
-    mutation createGame($userId: Int!, $categories: [String!], $level: String!){
+    mutation createGame($userId: ID!, $categories: [String!], $level: String!){
       createGame(input: {params: {
         userId: $userId
         categories: $categories
@@ -67,7 +67,12 @@ function toggle(value){
   const [newGame, { data, loading, error }] = useMutation(NEW_GAME)
     if (loading) console.log('Submitting...');
     if (error) console.log("error!", error.message)
-    if (data) addGameData(data)
+    useEffect(() => {
+      if (data) {
+        addGameData(data)
+      }
+    }, [data])
+
 
   function createGame(event) {
     event.preventDefault()
@@ -81,7 +86,7 @@ function toggle(value){
     if(categoriesToSend.length) {
       newGame({
         variables: {
-          userId: 16,
+          userId: parseInt(userId),
           categories: categoriesToSend,
           level: level
         }
@@ -129,7 +134,13 @@ function toggle(value){
             <input type="radio" id="hardmode" name="hardmode" value="Hard" checked={hardChecked} onChange={() => levelToggle("hard")}/>
           </div>
           <br></br>
-        <button className="start-game-btn" onClick={(event) => createGame(event)}>Start Game</button>
+          <div>
+          <Link to="/game" onClick={(event) => createGame(event)}>
+           <button className="start-game-btn" >
+           Start Game
+           </button>
+          </Link>
+          </div>
         {noCategoriesMessage()}
       </form>
     </>
