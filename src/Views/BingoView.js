@@ -8,14 +8,14 @@ import { useQuery, useMutation, gql } from '@apollo/client';
 import "../Styles/Modal.css"
 
 
-export const BingoView = ({ activities, gameId, addGameData }) => {
+export const BingoView = ({ activities, gameId, addGameData, setUserId }) => {
   const [squareCount, setSquareCount] = useState(0)
   const [squares, setSquares] = useState([])
   const [completedExcercises, setCompletedExercises] = useState([])
   const [squareData, setSquareData] = useState({})
   const [win, setWin] = useState(false)
 
-  
+
 
 
   const handleComplete = (id) => {
@@ -179,7 +179,7 @@ export const BingoView = ({ activities, gameId, addGameData }) => {
          }
   }
   `
-  const [completeGame, { data, loading, error }] = useMutation(COMPLETE_GAME)
+  const [completeGame, { data, loading, error, setGameScreen }] = useMutation(COMPLETE_GAME)
     if (loading) console.log('Submitting...');
     if (error) console.log("error!", error.message)
     if (data) console.log(data)
@@ -187,7 +187,7 @@ export const BingoView = ({ activities, gameId, addGameData }) => {
   if (!win) {
     return (
     <div className="bingo-view">
-      <Sidebar setWin={setWin} handleComplete={handleComplete} gameActivities={activities} checkWinCondition={checkWinCondition} gameId={gameId} completeGame={completeGame} addGameData={addGameData}/>
+      <Sidebar setUserId={setUserId} setGameScreen={setGameScreen} setWin={setWin} handleComplete={handleComplete} gameActivities={activities} checkWinCondition={checkWinCondition} gameId={gameId} completeGame={completeGame} addGameData={addGameData}/>
       <div className="main">
 { squares && <div className={`BingoCard${squareCount}`}>
           {squares}
@@ -203,4 +203,4 @@ export const BingoView = ({ activities, gameId, addGameData }) => {
     </div>
   )
 }
-} 
+}

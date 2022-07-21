@@ -123,20 +123,27 @@ useEffect(() => {
         <div className="sidebar-visable">
             <div key="stuff2" className="icon-section-sidebar">
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
-                <div className="swolify-sidebar-name"><Link className="link" onClick={() => props.completeGame({
+                <div className="swolify-sidebar-name"><Link className="link" onClick={() =>
+                  {
+                    props.completeGame({
                 variables: {
                   id: parseInt(props.gameId),
                   win: false,
                   activities: completedActivities
                 }
-              })} to="/">SWOLIFY</Link></div>
+              })
+              props.addGameData(null)
+              props.setUserId(null)
+              props.setGameScreen(null)
+            }
+            } to="/">SWOLIFY</Link></div>
             </div>
             <ul key="stuff" className="activity-list">{activities}</ul>
         </div> :
         <div className="sidebar-hidden">
             <ul key="stuff1" className="activity-list-hidden">{activities}</ul>
         </div>  }
-        {activityObject && <Modal setWin={props.setWin} collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={completeSidebar} checkWinCondition={props.checkWinCondition}
+        {activityObject && <Modal addGameData={props.addGameData} setUserId={props.setUserId} setGameScreen={props.setGameScreen} setWin={props.setWin} collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={completeSidebar} checkWinCondition={props.checkWinCondition}
         gameId={props.gameId} completeGame={props.completeGame} completedActivities={completedActivities} onClose={() => {
             setId(0)
             setActivityObject({})

@@ -23,7 +23,7 @@ const OVERLAY_STYLE = {
   zIndex: 1000
 }
 
-export const Modal = ({ setWin, checkWinCondition, open, activityObject, onClose, handleComplete, collectCompletedActivities, gameId, completeGame, completedActivities }) => {
+export const Modal = ({addGameData, setUserId, setGameScreen, setWin, checkWinCondition, open, activityObject, onClose, handleComplete, collectCompletedActivities, gameId, completeGame, completedActivities }) => {
 
   if (!open) return null
     return (
@@ -46,6 +46,9 @@ export const Modal = ({ setWin, checkWinCondition, open, activityObject, onClose
               }
             })
               setWin(true)
+              addGameData(null)
+              setUserId(null)
+              setGameScreen(null)
             }
             }}>COMPLETE</button>
         </div>
