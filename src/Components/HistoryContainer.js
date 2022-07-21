@@ -18,7 +18,7 @@ export const HistoryContainer = ({user}) => {
             <div key={game.id} className="history-card">
               <p>Game Number: {index + 1}</p>
               {displayWin(game.win)}
-              {activities}
+              <div>{activities}</div>
             </div>
           )
         })
