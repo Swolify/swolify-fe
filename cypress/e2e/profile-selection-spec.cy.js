@@ -1,18 +1,24 @@
+import { aliasQuery, aliasMutation, hasOperationName } from '../utils/graphql-test-utils'
 
 describe('swolify-fe', () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000/swolify-fe")
   })
 
-  it.skip('Should contain the Swolify title', () => {
-    cy.get(".landing-header").should("exist").should("have.text", "Swolify")
+  it('Should contain the Swolify title', () => {
+    cy.get(".logo-section").should("exist")
   });
 
-  it.skip('Should have 4 user profiles', () => {
-    cy.get(".user-icon").should("have.length", 4)
+  it('Should let a user display profiles', () => {
+    cy.get(".start-button").click()
+    cy.get(".user-icon-background").should("have.length", 4)
   });
 
-  it.skip('Should instruct a user to select a profile', () => {
-    cy.get(".profile-instructions").should("exist").should("have.text", "Select A Profile")
-   })
+  it('A user should be able to select a profile to view user dashboard', () => {
+    cy.get(".start-button").click()
+    cy.get(".user-icon-background").eq(1).click()
+    cy.url()
+    .should('eq', 'http://localhost:3000/swolify-fe/game')
+  });
+
 })
