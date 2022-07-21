@@ -17,7 +17,12 @@ gameData && console.log("app game data", gameData)
   useEffect(() => {
     gameData && console.log(gameData)
     gameData && setGameScreen(<BingoView
-      addGameData={addGameData} activities={gameData.createGame.game.gameActivities} gameId={gameData.createGame.game.id}/>)
+      addGameData={addGameData}
+      setGameScreen={setGameScreen}
+      activities={gameData.createGame.game.gameActivities}
+      gameId={gameData.createGame.game.id}
+      setUserId={setUserId}
+      />)
   }, [gameData])
 
   useEffect(() => {

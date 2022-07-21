@@ -123,13 +123,20 @@ useEffect(() => {
         <div className="sidebar-visable">
             <div key="stuff2" className="icon-section-sidebar">
                 <FontAwesomeIcon className="faDumbbell" icon={faDumbbell} />
-                <div className="swolify-sidebar-name"><Link className="link" onClick={() => props.completeGame({
+                <div className="swolify-sidebar-name"><Link className="link" onClick={() =>
+                  {
+                    props.completeGame({
                 variables: {
                   id: parseInt(props.gameId),
                   win: false,
                   activities: completedActivities
                 }
-              })} to="/">SWOLIFY</Link></div>
+              })
+              props.addGameData(null)
+              props.setUserId(null)
+              props.setGameScreen(null)
+            }
+            } to="/">SWOLIFY</Link></div>
             </div>
             <ul key="stuff" className="activity-list">{activities}</ul>
         </div> :
