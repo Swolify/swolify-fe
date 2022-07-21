@@ -143,7 +143,7 @@ useEffect(() => {
         <div className="sidebar-hidden">
             <ul key="stuff1" className="activity-list-hidden">{activities}</ul>
         </div>  }
-        {activityObject && <Modal setWin={props.setWin} collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={completeSidebar} checkWinCondition={props.checkWinCondition}
+        {activityObject && <Modal addGameData={props.addGameData} setUserId={props.setUserId} setGameScreen={props.setGameScreen} setWin={props.setWin} collectCompletedActivities={collectCompletedActivities} activityObject={activityObject} open={isOpen} handleComplete={completeSidebar} checkWinCondition={props.checkWinCondition}
         gameId={props.gameId} completeGame={props.completeGame} completedActivities={completedActivities} onClose={() => {
             setId(0)
             setActivityObject({})
