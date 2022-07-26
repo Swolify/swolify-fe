@@ -97,3 +97,4 @@ Hate working out but love yelling bingo? Try Swolify! At Swolify, users play an 
 - [Tyler Tedesco](https://github.com/sted1994)
 - [Kevin King](https://github.com/King13k)
 - [Matt Ruder](https://github.com/mattruder)
+- [Eli Davidson](https://github.com/elleshadow)
