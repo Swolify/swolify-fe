@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { UserIcon } from '../Components/UserIcon'
 import { Logo } from '../Components/Logo'
 import { SmallLogo } from '../Components/SmallLogo'

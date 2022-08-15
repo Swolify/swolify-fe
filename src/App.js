@@ -39,7 +39,7 @@ gameData && console.log("app game data", gameData)
       <Routes>
         <Route exact path="/" element={<ProfileView setUserId={setUserId} userId={userId} setUser={setUser}/>} />
         <Route exact path="/game" element={gameScreen} />
-        // <Route exact path="/dashboard" element={userId && !gameData && <DashboardView user={user} setUser={setUser} userId={userId} addGameData={addGameData} /> } />
+        <Route exact path="/dashboard" element={userId && !gameData && <DashboardView user={user} setUser={setUser} userId={userId} addGameData={addGameData} /> } />
       </Routes>
     </div>
   );
