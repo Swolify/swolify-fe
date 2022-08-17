@@ -9,19 +9,19 @@ export const WinLossRatioChart = ({user}) => {
       return (
         <section className="pieChart">
           <VictoryPie
-          width={800}
+          width={600}
             style={{
               data: {
                 fillOpacity: 0.9, stroke: "black", strokeWidth: 20
               },
               labels: {
-                fontSize: 15, fill: "#fff", fontFamily: 'Press Start 2P'
+                fontSize: 13, fill: "#fff", fontFamily: 'Press Start 2P'
               }
             }}
             colorScale={["#e61bd8", "#35abef" ]}
             data={[
-             { x: `Wins (${user.wins})`, y: user.wins },
-             { x: `Losses (${user.losses})`, y: user.losses }
+             { x: `Wins(${user.wins})`, y: user.wins },
+             { x: `Losses(${user.losses})`, y: user.losses }
              ]}
           />
         </section>
