@@ -9,9 +9,10 @@
 
 .game-data-section {
   margin-left: 2em;
-  width: 30%;
+  width: 50%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-around;
 }
 

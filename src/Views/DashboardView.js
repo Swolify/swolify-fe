@@ -17,6 +17,8 @@ export const DashboardView = ({ addGameData, user, setUser, userId, setRenderGam
           losses
           gameCount
           activityCount
+          daysInCurrentActiveStreak
+          daysInLongestStreak
           games{
             id
             win
