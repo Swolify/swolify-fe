@@ -4,7 +4,7 @@ import '../Styles/GameStats.css'
 export const GameStats = ({user}) => {
   if(user){
     return (
-      <>
+      <section className='stat-container'>
         <section className="game-summary-section">
           <div>
             <p>{user.gameCount}</p>
@@ -25,7 +25,7 @@ export const GameStats = ({user}) => {
             <h3>Current Streak</h3>
           </div>
         </section>
-      </>
+      </section>
     )
   }
 }

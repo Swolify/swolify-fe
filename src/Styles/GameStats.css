@@ -5,5 +5,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 10px;
+  width: 100%;
+}
+
+.stat-container{
+  display: flex;
+  justify-content: space-between;
   width: 100%;
 }
